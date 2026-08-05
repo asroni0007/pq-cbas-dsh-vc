@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+ xsi:noNamespaceSchemaLocation="http://sumo.dlr.de/xsd/sumoConfiguration.xsd">
+    <input>
+        <net-file value="StudyAreNetwork.net.xml"/>
+        <route-files value="Demand.rou.xml"/>
+        <additional-files value="PublicTransport.xml,bpu_studyarea.add.xml"/>
+    </input>
+    <time>
+        <begin value="0"/>
+        <end value="3600"/>
+        <step-length value="1.0"/>
+    </time>
+    <processing>
+        <time-to-teleport value="300"/>
+        <ignore-route-errors value="true"/>
+    </processing>
+    <output>
+        <fcd-output value="studyarea_fcd.xml"/>
+    </output>
+</configuration>

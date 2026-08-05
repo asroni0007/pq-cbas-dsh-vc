@@ -1,0 +1,45 @@
+{
+ "source": "SUMO FCD trace (synthetic from StudyArea network)",
+ "fcd_file": "sumo/synthetic_fcd.xml",
+ "rsu": {
+  "x": 80.0,
+  "y": 36.0,
+  "R": 150.0
+ },
+ "window_ms": 90.0,
+ "mode": "full",
+ "seeds": 3,
+ "alg": "ML-DSA-65",
+ "host": "Apple M2 MacBook Air, macOS 26.4.1, Python 3.13.13, liboqs 0.15.0",
+ "vehicles_in_rsu": 269,
+ "contact_mean_s": 18.7,
+ "contact_p5_s": 13.0,
+ "contact_p95_s": 30.0,
+ "messages_total": 807,
+ "e2e_mean_ms": 45.1,
+ "e2e_mean_ci95": 1.48,
+ "e2e_p95_ms": 83.9,
+ "proc_mean_ms": 0.11,
+ "deadline_misses": 0,
+ "miss_rate_pct": 0.0,
+ "per_seed": [
+  {
+   "seed": 1,
+   "e2e_mean_ms": 44.7,
+   "deadline_misses": 0,
+   "messages": 269
+  },
+  {
+   "seed": 2,
+   "e2e_mean_ms": 44.0,
+   "deadline_misses": 0,
+   "messages": 269
+  },
+  {
+   "seed": 3,
+   "e2e_mean_ms": 46.6,
+   "deadline_misses": 0,
+   "messages": 269
+  }
+ ]
+}
