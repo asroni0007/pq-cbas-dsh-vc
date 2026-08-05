@@ -12,7 +12,6 @@ the scripts in this bundle.
 ## Contents
 
 ```
-paper/      LaTeX source (elsarticle) + compiled PDF
 src/        measurement code (Python)
 esp32/      microcontroller-class OBU benchmark (Arduino IDE)
 sumo/       StudyArea network, demand, and SUMO configuration
@@ -22,6 +21,8 @@ docs/       platform guides and revision notes
 ```
 
 ---
+The manuscript source is not included in this repository; see the published
+article for the paper itself.
 
 ## Requirements
 
