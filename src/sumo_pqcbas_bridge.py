@@ -5,9 +5,10 @@ sumo_pqcbas_bridge.py — SUMO FCD adapter for PQ-CBAS-DSH
 Workflow:
   1. Run SUMO headless (subprocess) → studyarea_fcd.xml
   2. Parse FCD → per-vehicle RSU entry/exit times (real mobility trace)
-  3. Feed mobility-derived arrival schedule to PQ-CBAS-DSH verifier
-     (liboqs ML-DSA-65, AggCheck 4-check, cert-digest mode optional)
-  4. Report: E2E latency, deadline-miss rate, processing cost
+  3. Feed the mobility-derived arrival schedule to the PQ-CBAS-DSH verifier
+     (liboqs ML-DSA-65; certificate-digest cache model optional).
+  4. Report transport-excluded authentication-pipeline latency, deadline-miss
+     rate, and verifier processing cost.
 
 Usage:
   OQS_INSTALL_PATH=~/oqs python3 sumo_pqcbas_bridge.py \
@@ -117,6 +118,10 @@ class CA:
         self.signer = oqs.Signature(ALG)
         self.pk = self.signer.generate_keypair()
 
+def cert_bytes(cert):
+    return cert[0] + cert[1] + cert[2]
+
+
 class OBU:
     def __init__(self, ca: CA):
         self.signer = oqs.Signature(ALG)
@@ -125,53 +130,98 @@ class OBU:
         mu = xof(H_CERT, self.ID + self.pk + b"ctx_cert")
         gamma = ca.signer.sign(mu)
         self.cert = (self.ID, self.pk, gamma)
-        self.cert_id = xof(H_CERT, self.ID + self.pk + gamma)  # 32-B digest
+        self.cert_id = xof(H_CERT, cert_bytes(self.cert))
 
-    def sign_message(self):
+    def _signed_fields(self):
         m = secrets.token_bytes(100)
         fr = secrets.token_bytes(8)
-        mu = xof(H_SIGN, self.ID + m + self.pk +
-                 self.cert[0] + self.cert[1] + self.cert[2] + fr)
-        return self.ID, m, self.pk, self.cert, self.signer.sign(mu), fr
+        mu = xof(
+            H_SIGN,
+            self.ID + m + self.pk + self.cert[0] + self.cert[1] + self.cert[2] + fr,
+        )
+        return m, fr, self.signer.sign(mu)
 
-CERT_CACHE = {}
+    def full_record(self):
+        m, fr, sig = self._signed_fields()
+        return {
+            "kind": "full", "ID": self.ID, "m": m, "pk": self.pk,
+            "cert": self.cert, "cid": self.cert_id, "sig": sig, "fresh": fr,
+        }
 
-def verify_window(tuples, pk_ca, verifier, digest_mode=False):
-    """AggCheck 4-condition verifier. Returns (elapsed_ms, accepted, rejected)."""
+    def digest_record(self):
+        m, fr, sig = self._signed_fields()
+        return {
+            "kind": "digest", "ID": self.ID, "m": m, "cid": self.cert_id,
+            "sig": sig, "fresh": fr,
+        }
+
+
+CERT_CACHE = {}  # CertID -> (pk, cert)
+
+
+def verify_window(records, pk_ca, verifier, digest_mode=False):
+    """Timed verifier path. Digest records resolve only from a validated cache."""
     t0 = time.perf_counter_ns()
     acc = rej = 0
-    for (ID, m, pk, cert, sig, fr) in tuples:
-        if digest_mode:
-            cid = xof(H_CERT, cert[0] + cert[1] + cert[2])
-            if cid not in CERT_CACHE:
-                mu_c = xof(H_CERT, cert[0] + cert[1] + b"ctx_cert")
-                if not verifier.verify(mu_c, cert[2], pk_ca):
-                    rej += 1; continue
-                CERT_CACHE[cid] = True
+
+    for rec in records:
+        ID, m, sig, fr = rec["ID"], rec["m"], rec["sig"], rec["fresh"]
+
+        if digest_mode and rec["kind"] == "digest":
+            cached = CERT_CACHE.get(rec["cid"])
+            if cached is None:
+                rej += 1
+                continue
+            pk, cert = cached
+            if cert[0] != ID:
+                rej += 1
+                continue
         else:
+            pk, cert = rec["pk"], rec["cert"]
+            if cert[0] != ID or cert[1] != pk:
+                rej += 1
+                continue
+            cid = xof(H_CERT, cert_bytes(cert))
+            if cid != rec["cid"]:
+                rej += 1
+                continue
             mu_c = xof(H_CERT, cert[0] + cert[1] + b"ctx_cert")
             if not verifier.verify(mu_c, cert[2], pk_ca):
-                rej += 1; continue
+                rej += 1
+                continue
+            if digest_mode:
+                CERT_CACHE[cid] = (pk, cert)
+
         mu_s = xof(H_SIGN, ID + m + pk + cert[0] + cert[1] + cert[2] + fr)
         if verifier.verify(mu_s, sig, pk):
             acc += 1
         else:
             rej += 1
+
     return (time.perf_counter_ns() - t0) / 1e6, acc, rej
 
 # ------------------------------------------------------------------ main simulation
-def simulate(arrivals, contact_dur, ca, obus, W_ms, digest_mode, seed):
+def simulate(arrivals, contact_dur, ca, obus, W_ms, digest_mode, seed, digest_cache_model="warm"):
     """
     Simulate RSU collection windows over the SUMO mobility trace.
 
-    Each vehicle that enters RSU coverage generates one authenticated message
-    (its first contact). Windows close every W_ms; all messages in the window
-    are verified as a batch.
+    Each FCD vehicle entry contributes one measured authenticated message.
+    Windows close every W_ms and all records in the window are batch-verified.
+    In digest/warm mode this measured message represents steady state after a
+    previously validated first attach; digest/cold measures the attach record.
     """
     CERT_CACHE.clear()
     rng = np.random.default_rng(seed)
 
-    # Build message schedule: one message per vehicle entry, jitter ±10ms
+    # The SUMO workload schedules one measured message per FCD vehicle entry.
+    # In digest mode the default "warm" setting models the steady-state message
+    # after a previously validated first attach; the attach itself is outside the
+    # timed window.  "cold" instead sends a full-certificate attach record.
+    if digest_mode and digest_cache_model == "warm":
+        for obu in obus:
+            CERT_CACHE[obu.cert_id] = (obu.pk, obu.cert)
+
+    # Build message schedule: one measured message per vehicle entry, jitter ±10ms
     schedule = []
     obu_pool = {i: obus[i % len(obus)] for i in range(len(arrivals))}
     for idx, (t_ms, vid) in enumerate(arrivals):
@@ -196,7 +246,10 @@ def simulate(arrivals, contact_dur, ca, obus, W_ms, digest_mode, seed):
             while i < len(schedule) and schedule[i][0] <= w_end:
                 t_arr, idx = schedule[i]
                 obu = obu_pool[idx]
-                batch.append(obu.sign_message())
+                if digest_mode and digest_cache_model == "warm":
+                    batch.append(obu.digest_record())
+                else:
+                    batch.append(obu.full_record())
                 batch_arr.append(t_arr)
                 i += 1
             if batch:
@@ -227,6 +280,7 @@ def simulate(arrivals, contact_dur, ca, obus, W_ms, digest_mode, seed):
         "sim_duration_s": round(sim_dur_s, 0),
         "vehicles_in_rsu": len(arrivals),
         "windows": len(window_procs),
+        "digest_cache_model": digest_cache_model if digest_mode else None,
     }
 
 # ------------------------------------------------------------------ entry point
@@ -241,9 +295,17 @@ def main():
     ap.add_argument("--window",type=float, default=90.0,  help="collection window W (ms)")
     ap.add_argument("--seeds", type=int,   default=3,     help="crypto seeds to average")
     ap.add_argument("--digest",action="store_true", help="certificate-digest mode")
+    ap.add_argument(
+        "--digest-cache-model", choices=("warm", "cold"), default="warm",
+        help=("digest-mode cache assumption: warm = steady-state CertID message after "
+              "prevalidated attach; cold = measured message carries full certificate"),
+    )
     ap.add_argument("--no-sumo",action="store_true", help="skip SUMO run, use existing FCD")
     ap.add_argument("--sumo-binary", default="sumo")
-    ap.add_argument("--n-obus", type=int, default=50, help="OBU pool size for crypto")
+    ap.add_argument(
+        "--n-obus", type=int, default=0,
+        help="crypto identity pool size; 0 = one unique OBU identity per FCD vehicle (paper default)",
+    )
     args = ap.parse_args()
 
     mode = "digest" if args.digest else "full"
@@ -273,10 +335,11 @@ def main():
           f"p5={np.percentile(durs_s,5):.1f}s p95={np.percentile(durs_s,95):.1f}s")
 
     # Step 3: set up crypto
-    print(f"\n[CRYPTO] Setting up CA + {args.n_obus} OBUs (ML-DSA-65)...")
+    n_obus = args.n_obus if args.n_obus > 0 else len(arrivals)
+    print(f"\n[CRYPTO] Setting up CA + {n_obus} OBUs (ML-DSA-65)...")
     t0 = time.perf_counter()
     ca = CA()
-    obus = [OBU(ca) for _ in range(args.n_obus)]
+    obus = [OBU(ca) for _ in range(n_obus)]
     print(f"[CRYPTO] Setup done in {time.perf_counter()-t0:.1f}s")
 
     # Step 4: simulate over seeds
@@ -284,7 +347,10 @@ def main():
     for k in range(args.seeds):
         seed = 7 + 97 * k
         print(f"\n[SIM] Seed {k+1}/{args.seeds} ...", end=" ", flush=True)
-        r = simulate(arrivals, contact_dur, ca, obus, args.window, args.digest, seed)
+        r = simulate(
+            arrivals, contact_dur, ca, obus, args.window, args.digest, seed,
+            digest_cache_model=args.digest_cache_model,
+        )
         if r:
             results.append(r)
             print(f"E2E={r['e2e_mean_ms']}ms  miss={r['deadline_misses']}/{r['messages']}")
@@ -304,6 +370,9 @@ def main():
         "rsu": {"x": args.rsu_x, "y": args.rsu_y, "R": args.R},
         "window_ms": args.window,
         "mode": mode,
+        "digest_cache_model": args.digest_cache_model if args.digest else None,
+        "transport_included": False,
+        "crypto_identities": n_obus,
         "seeds": args.seeds,
         "alg": ALG,
         "vehicles_in_rsu": len(arrivals),

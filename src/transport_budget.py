@@ -125,9 +125,11 @@ def latex():
           f"{TUPLE_DIGEST_B:,}~B) dan DSRC 6~Mbit/s, $T_{{\\mathrm{{tx}}}} = {t_dig:.2f}$~ms, "
           f"sehingga $W + T_{{\\mathrm{{proc,max}}}} + T_{{\\mathrm{{tx}}}} = {tot_dig:.2f}$~ms "
           f"dan margin terhadap deadline $100$~ms menyusut dari $7.6$~ms menjadi "
-          f"${marg_dig:.2f}$~ms. Kesimpulan kelayakan bersyarat tetap berlaku, tetapi "
-          r"marginnya jauh lebih ketat, yang memperkuat temuan E4 bahwa pemilihan "
-          r"$W$ merupakan parameter dominan.")
+          f"${marg_dig:.2f}$~ms. Margin yang sempit ini tidak membuktikan kelayakan "
+          r"transport-inclusive karena contention, queueing, retransmission, dan "
+          r"fragmentation belum dimodelkan. Hasil analitik ini menandai batas yang "
+          r"perlu divalidasi dengan simulasi PHY/MAC tingkat paket dan konsisten "
+          r"dengan ruang lingkup temuan E3.")
     print()
     print(r"Analisis beban kanal justru lebih membatasi. Pada $25$ kendaraan serentak "
           f"dengan $10$~msg/s, mode digest menghasilkan ${load_dig:.2f}$~Mbit/s, yang "

@@ -24,7 +24,7 @@ echo "════════════════════════�
 
 # ---------- 1. STRUKTUR ----------
 hdr "1. Struktur folder"
-for d in paper src esp32 sumo results scripts docs; do
+for d in src esp32 sumo results scripts docs; do
   if [ -d "$d" ]; then ok "$d/ ($(find "$d" -type f | wc -l | tr -d ' ') berkas)"
   else bad "$d/ TIDAK ADA"; fi
 done
@@ -61,9 +61,15 @@ done
 
 # cek apakah hasil 20-seed sudah ada
 if grep -lq '"seeds": *20' results/*.json 2>/dev/null; then
-  ok "hasil 20-seed ditemukan"
+  ok "hasil 20-seed historis ditemukan"
 else
-  warn "belum ada hasil 20-seed di results/ — salin dari folder kerja"
+  warn "belum ada hasil 20-seed di results/"
+fi
+
+if [ -f results/SOURCE_ALIGNED_RERUN_COMPLETE.json ]; then
+  ok "marker rerun source-aligned ditemukan"
+else
+  warn "hasil JSON yang ada adalah historis; rerun eksperimen terdampak sebelum tag evidentiary/Zenodo baru"
 fi
 
 # ---------- 5. KECOCOKAN ANGKA DENGAN NASKAH ----------
@@ -94,28 +100,31 @@ for r in rows:
         print(f"    {mark} {s:22s} {v:5.1f} ms   (naskah {exp})")
 PY
 
-# ---------- 6. NASKAH ----------
-hdr "6. Naskah"
-[ -f paper/PQ-CBAS-DSH_VehicularCommunications.tex ] \
-  && ok "sumber LaTeX ada" || bad "sumber LaTeX TIDAK ADA"
-[ -f paper/elsarticle.cls ] && ok "elsarticle.cls disertakan" || warn "elsarticle.cls tidak ada"
-IMG=$(ls paper/image*.png 2>/dev/null | wc -l | tr -d ' ')
-[ "$IMG" -eq 6 ] && ok "6 gambar" || warn "gambar: $IMG (harusnya 6)"
-
-if command -v pdflatex >/dev/null 2>&1; then
-  (cd paper && pdflatex -interaction=nonstopmode -draftmode \
-      PQ-CBAS-DSH_VehicularCommunications.tex >/tmp/_tex.log 2>&1)
-  E=$(grep -c '^!' /tmp/_tex.log || true)
-  [ "$E" -eq 0 ] && ok "kompilasi LaTeX bersih" || bad "LaTeX $E error — lihat /tmp/_tex.log"
-  (cd paper && rm -f *.aux *.log *.out *.spl 2>/dev/null)
+# ---------- 6. NASKAH (OPSIONAL) ----------
+hdr "6. Naskah (opsional)"
+if [ -d paper ]; then
+  ok "paper/ disertakan sebagai material tambahan"
+  TEX=$(find paper -maxdepth 1 -name '*.tex' | head -1 || true)
+  [ -n "$TEX" ] && ok "sumber LaTeX ditemukan: $(basename "$TEX")" || warn "paper/ ada tetapi tidak ada .tex"
 else
-  warn "pdflatex tidak terpasang — lewati uji kompilasi"
+  ok "paper/ tidak disertakan (diizinkan untuk repository artefak)"
+fi
+
+# release gate source/manuscript alignment
+if [ -f scripts/check_source_alignment.py ]; then
+  if python3 scripts/check_source_alignment.py >/tmp/_pq_alignment.log 2>&1; then
+    ok "source-alignment gate: SOURCE_ALIGNMENT_OK"
+  else
+    bad "source-alignment gate GAGAL — lihat /tmp/_pq_alignment.log"
+  fi
+else
+  bad "scripts/check_source_alignment.py TIDAK ADA"
 fi
 
 # ---------- 7. PLACEHOLDER YANG BELUM DIISI ----------
 hdr "7. Placeholder"
 for pat in "\[ISI" "\[Nama Penulis" "\[NAMA ALAT" "\[SPECIFY"; do
-  C=$(grep -rl "$pat" paper/*.tex README.md 2>/dev/null | tr '\n' ' ')
+  C=$(grep -rl "$pat" README.md paper/*.tex 2>/dev/null | tr '\n' ' ')
   [ -n "$C" ] && warn "'$pat' masih ada di: $C"
 done
 [ "$WARN" -eq 0 ] && ok "tidak ada placeholder tersisa"

@@ -30,7 +30,6 @@ H_AGG  = b"PQ-CBAS-DSH/AGG"
 def unpack_z(sig: bytes) -> np.ndarray:
     raw = np.frombuffer(sig, dtype=np.uint8, count=Z_LEN, offset=CT_LEN).astype(np.uint64)
     raw = raw.reshape(-1, 5)  # 5 bytes -> 2 coeffs of 20 bits
-    c0 = raw[:, 0] | ((raw[:, 1] & 0x0F) << 8) | ((raw[:, 2] & 0xFF) << 12)
     c0 = raw[:, 0] | (raw[:, 1] << 8) | ((raw[:, 2] & 0x0F) << 16)
     c1 = (raw[:, 2] >> 4) | (raw[:, 3] << 4) | (raw[:, 4] << 12)
     coeffs = np.empty(raw.shape[0] * 2, dtype=np.int64)
@@ -78,12 +77,46 @@ def obu_sign(signer, ID, m, pk, cert, fresh):
 def make_tuple(ID, m, pk, cert, sigma, fresh):
     return {"ID": ID, "m": m, "pk": pk, "cert": cert, "sigma": sigma, "fresh": fresh}
 
+# Wire-size serialization retained only for byte counts reported in the paper.
 def ser_tuple(T):
     return T["ID"] + T["m"] + T["pk"] + T["cert"][0] + T["cert"][1] + T["cert"][2] + T["sigma"] + T["fresh"]
 
+# Assumption A3: canonical, prefix-free full-tuple transcript encoding.
+# Variable-length fields are prefixed by an unsigned 32-bit big-endian length.
+# The FIPS 204 ML-DSA-65 signature (3309 B) and freshness value (8 B) are
+# fixed-width in this profile, matching the manuscript's Enc(sigma) and Enc_8.
+def _lp(x: bytes) -> bytes:
+    if not isinstance(x, (bytes, bytearray)):
+        raise TypeError("canonical fields must be byte strings")
+    return len(x).to_bytes(4, "big") + bytes(x)
+
+def enc_cert(cert) -> bytes:
+    cid, cpk, gamma = cert
+    return _lp(cid) + _lp(cpk) + _lp(gamma)
+
+def enc_full(T) -> bytes:
+    sigma = T["sigma"]
+    fresh = T["fresh"]
+    if len(sigma) != 3309:
+        raise ValueError(f"ML-DSA-65 signature must be 3309 B, got {len(sigma)}")
+    if len(fresh) != 8:
+        raise ValueError(f"freshness must be 8 B, got {len(fresh)}")
+    cert_bytes = enc_cert(T["cert"])
+    return (
+        _lp(T["ID"]) + _lp(T["m"]) + _lp(T["pk"]) +
+        _lp(cert_bytes) + sigma + fresh
+    )
+
+def canonicalize(tuples):
+    pairs = sorted(((enc_full(T), T) for T in tuples), key=lambda p: p[0])
+    encs = [p[0] for p in pairs]
+    if any(a == b for a, b in zip(encs, encs[1:])):
+        raise ValueError("duplicate canonical tuple")
+    return [p[1] for p in pairs], encs
+
 def aggregate(tuples):
-    ts = sorted(tuples, key=lambda T: T["ID"])               # Eq 17
-    tau = xof(H_AGG, b"".join(ser_tuple(T) for T in ts))     # Eq 18
+    ts, encs = canonicalize(tuples)                           # Eq 17 / A3
+    tau = xof(H_AGG, b"".join(encs))                         # Eq 18
     bar_z = np.zeros(L * N, dtype=np.int64)
     for T in ts:
         bar_z += unpack_z(T["sigma"])                        # Eq 19
@@ -95,13 +128,18 @@ def agg_size(agg, m):
     return agg["bar_z"].astype(np.int32).nbytes + len(agg["C"]) + len(agg["eta"]) + len(agg["tau"])
 
 def aggverify(pp, agg, ts, verify_sigs=True):
+    try:
+        ts, encs = canonicalize(ts)
+    except (TypeError, ValueError):
+        return False
     for T in ts:                                             # Eq 23
         if not certvalidate(pp["pk_CA"], T["cert"]):
             return False
-    tau2 = xof(H_AGG, b"".join(ser_tuple(T) for T in ts))    # Eq 24-25
+    tau2 = xof(H_AGG, b"".join(encs))                        # Eq 24-25 / A3
     if tau2 != agg["tau"]:
         return False
-    # AggCheck (Eq 26): (i) per-signer verification, (ii) bar_z consistency, (iii) eta consistency
+    # AggCheck (Eq 26): (i) per-signer verification, (ii) bar_z consistency,
+    # (iii) challenge-list C consistency, and (iv) eta consistency
     if verify_sigs:
         with oqs.Signature(ALG) as v:
             for T in ts:
@@ -227,7 +265,11 @@ def main():
     ok = 0
     for _ in range(TRIALS):
         ts2 = list(ts); ts2[rng.randrange(len(ts2))] = make_tuple(ID2, msg2, pk2, cert2, sigma2, fresh2)
-        tau2 = xof(H_AGG, b"".join(ser_tuple(T) for T in sorted(ts2, key=lambda T: T["ID"])))
+        try:
+            _, encs2 = canonicalize(ts2)
+            tau2 = xof(H_AGG, b"".join(encs2))
+        except ValueError:
+            tau2 = b""
         if tau2 == agg["tau"]:
             ok += 1
     sec["AMA_subst"] = ok

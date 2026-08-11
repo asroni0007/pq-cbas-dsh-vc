@@ -11,14 +11,16 @@
 # n=20 sudah menangkap ~96% manfaat penyempitan CI. Lihat src/ci_stats.py.
 
 set -euo pipefail
-cd "$(dirname "$0")"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+cd "$ROOT_DIR"
 
 SEEDS="${1:-20}"
 W="${2:-90}"
-OQS_PREFIX="${OQS_PREFIX:-$HOME/oqs}"
+OQS_PREFIX="${OQS_PREFIX:-$HOME/oqs-0.15.0}"
 
 if [ ! -d "$OQS_PREFIX/lib" ]; then
-  echo "liboqs tidak ditemukan di $OQS_PREFIX — jalankan 'bash run_bench.sh' dulu." >&2
+  echo "liboqs tidak ditemukan di $OQS_PREFIX — jalankan 'bash scripts/run_bench.sh' dulu." >&2
   exit 1
 fi
 

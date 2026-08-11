@@ -29,7 +29,7 @@ extern "C" {
 
 /* ---- parameter benchmark ---- */
 #define N_KEYPAIR    20
-#define N_SIGN       50
+#define N_SIGN       500
 #define N_VERIFY     50
 #define N_DSH       200
 #define N_BATCH      10        /* repetisi per ukuran batch */

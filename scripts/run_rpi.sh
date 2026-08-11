@@ -13,11 +13,13 @@
 #                          baik Anda yang menemukan daripada reviewer.
 
 set -euo pipefail
-cd "$(dirname "$0")"
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
+cd "$ROOT_DIR"
 
 SEEDS="${1:-20}"
 W="${2:-90}"
-OQS_PREFIX="${OQS_PREFIX:-$HOME/oqs}"
+OQS_PREFIX="${OQS_PREFIX:-$HOME/oqs-0.15.0}"
 STAMP="$(date +%Y%m%d_%H%M%S)"
 OUT="results_rpi_${STAMP}"
 mkdir -p "$OUT"
@@ -62,7 +64,7 @@ if [ "$THR" != "0x0" ] && [ "$THR" != "n/a" ]; then
 fi
 
 if [ ! -d "$OQS_PREFIX/lib" ]; then
-  echo "liboqs tidak ada di $OQS_PREFIX — jalankan 'bash run_bench.sh' dulu." >&2
+  echo "liboqs tidak ada di $OQS_PREFIX — jalankan 'bash scripts/run_bench.sh' dulu." >&2
   exit 1
 fi
 # shellcheck disable=SC1091
