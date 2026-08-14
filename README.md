@@ -14,7 +14,6 @@ esp32/       microcontroller-class OBU benchmark (Arduino IDE)
 sumo/        StudyArea network, demand, and SUMO configuration
 scripts/     run wrappers and release checks
 results/     raw JSON outputs underlying Tables 5-19
-docs/        platform guides and revision notes
 ```
 
 The manuscript source (LaTeX) is not required to run the artifact.

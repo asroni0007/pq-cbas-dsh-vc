@@ -48,7 +48,7 @@ Verifikasi: `sumo --version`
 
 ### 2) Python dependencies (di venv PQ-CBAS-DSH yang sudah ada)
 ```bash
-cd "/Users/asroni/Documents/S3_DTETI_UGM/SH 1/P5/Sc_P5"
+cd /path/to/pq-cbas-dsh-vc
 source venv/bin/activate
 pip install numpy  # sudah ada
 ```

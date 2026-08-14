@@ -1,5 +1,5 @@
 {"platform":"esp32","board":"ESP32-WROOM-32 (DOIT DevKit V1)","cpu_mhz":240,
- "impl":"PQClean ML-DSA-65 clean","note":"paste of the on-device JSON block; see docs/ARDUINO_GUIDE.md",
+ "impl":"PQClean ML-DSA-65 clean","note":"paste of the on-device JSON block; from on-device Arduino IDE serial output",
  "keypair_ms":27.4442,"keypair_sd":0.1365,
  "sign_ms":84.4360,"sign_sd":53.7754,
  "verify_ms":27.6721,"verify_sd":0.0122,

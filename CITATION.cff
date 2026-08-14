@@ -1,0 +1,14 @@
+cff-version: 1.2.0
+message: "If you use this software artifact, please cite the archived artifact and the associated paper."
+title: "PQ-CBAS-DSH Research Artifact"
+type: software
+authors:
+  - name: "Authors withheld for anonymized review"
+license: MIT
+version: "1.1.0-source-aligned"
+date-released: 2026-08-11
+preferred-citation:
+  type: article
+  title: "What Post-Quantum Authentication Costs in a VANET: Measuring ML-DSA-65 Across Device Classes in a Certificate-Based Batched-Verification Framework"
+  authors:
+    - name: "Authors withheld for anonymized review"
