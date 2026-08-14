@@ -4,8 +4,7 @@ Reproducible source code and measurement artifact for:
 
 > **What Post-Quantum Authentication Costs in a VANET: Measuring ML-DSA-65 Across Device Classes in a Certificate-Based Batched-Verification Framework**
 
-- **Repository:** https://github.com/asroni0007/pq-cbas-dsh-vc
-- **Archived artifact DOI:** https://doi.org/10.5281/zenodo.21805963
+*(Repository and DOI identifiers withheld from this snapshot for anonymized review.)*
 
 ## Contents
 
