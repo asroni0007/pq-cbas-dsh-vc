@@ -2,6 +2,7 @@ CITATION.cff
 LICENSE
 README.md
 docs/RPI_GUIDE.md
+docs/images/repo_banner.png
 esp32/PQCBAS_ESP32_Bench/PQCBAS_ESP32_Bench.ino
 esp32/PQCBAS_ESP32_Bench/patch_n500.sh
 esp32/PQCBAS_ESP32_Bench/setup_arduino.sh

@@ -2,6 +2,8 @@
 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21805963.svg)](https://doi.org/10.5281/zenodo.21805963)
 
+![PQ-CBAS-DSH architecture: CA, OBU, RSU, CS pipeline across three measured device classes](docs/images/repo_banner.png)
+
 Reproducible source code and measurement artifact for:
 
 > **What Post-Quantum Authentication Costs in a VANET: Measuring ML-DSA-65 Across Device Classes in a Certificate-Based Batched-Verification Framework**
