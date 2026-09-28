@@ -3,12 +3,25 @@ message: "If you use this software artifact, please cite the archived artifact a
 title: "PQ-CBAS-DSH Research Artifact"
 type: software
 authors:
-  - name: "Authors withheld for anonymized review"
+  - family-names: "Asroni"
+    given-names: "Asroni"
+  - family-names: "Sulistyo"
+    given-names: "Selo"
+  - family-names: "Wibowo"
+    given-names: "Sigit B."
 license: MIT
-version: "1.1.0-source-aligned"
-date-released: 2026-08-11
+version: "1.2.0-rsu-measured"
+date-released: 2026-09-28
+repository-code: "https://github.com/asroni0007/pq-cbas-dsh-vc"
+doi: 10.5281/zenodo.21805963
 preferred-citation:
   type: article
   title: "What Post-Quantum Authentication Costs in a VANET: Measuring ML-DSA-65 Across Device Classes in a Certificate-Based Batched-Verification Framework"
   authors:
-    - name: "Authors withheld for anonymized review"
+    - family-names: "Asroni"
+      given-names: "Asroni"
+    - family-names: "Sulistyo"
+      given-names: "Selo"
+    - family-names: "Wibowo"
+      given-names: "Sigit B."
+  journal: "Vehicular Communications"

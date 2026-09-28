@@ -1,6 +1,7 @@
 CITATION.cff
 LICENSE
 README.md
+docs/RPI_GUIDE.md
 esp32/PQCBAS_ESP32_Bench/PQCBAS_ESP32_Bench.ino
 esp32/PQCBAS_ESP32_Bench/patch_n500.sh
 esp32/PQCBAS_ESP32_Bench/setup_arduino.sh
@@ -13,6 +14,10 @@ results/e2e_results_mac_m2.json
 results/esp32_n500_summary.json
 results/results_mac_m2.json
 results/results_xeon_sandbox.json
+results/rpi5_20260928/README.md
+results/rpi5_20260928/console_log.txt
+results/rpi5_20260928/rsu_results.csv
+results/rpi5_20260928/rsu_results_platform.json
 results/sumo_pqcbas_W90_digest.json
 results/sumo_pqcbas_W90_digest_mac_m2.json
 results/sumo_pqcbas_W90_digest_real_mac_m2.json
