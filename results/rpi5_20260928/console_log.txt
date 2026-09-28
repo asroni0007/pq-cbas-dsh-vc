@@ -1,0 +1,36 @@
+[setup] generating CA keypair + vehicle keys/certs
+[2/4] CertValidate / MsgVerify  (n=200)
+[3/4] generating 64 vehicle keys/certs
+[4/4] Agg / AggCheck  (n=100 per size, sizes=[1, 2, 4, 8, 16, 32, 64])
+   m=  1  Agg    0.026 ms   AggCheck    0.147 ms
+   m=  2  Agg    0.048 ms   AggCheck    0.289 ms
+   m=  4  Agg    0.092 ms   AggCheck    0.570 ms
+   m=  8  Agg    0.178 ms   AggCheck    1.133 ms
+   m= 16  Agg    0.352 ms   AggCheck    2.261 ms
+   m= 32  Agg    0.700 ms   AggCheck    4.514 ms
+   m= 64  Agg    1.458 ms   AggCheck    9.105 ms
+
+  operation          m     n   mean(ms)       std      ci95  per-tuple
+  keypair            1   200     0.1277    0.0040    0.0006     0.1277
+  DSH_2xSHAKE256     1   200     0.0111    0.0005    0.0001     0.0111
+  sign               1   200     0.3198    0.1616    0.0225     0.3198
+  CertValidate       1   200     0.1288    0.0007    0.0001     0.1288
+  MsgVerify          1   200     0.1304    0.0007    0.0001     0.1304
+  Agg                1   100     0.0262    0.0007    0.0001     0.0262
+  AggCheck           1   100     0.1472    0.0013    0.0003     0.1472
+  Agg                2   100     0.0482    0.0006    0.0001     0.0241
+  AggCheck           2   100     0.2887    0.0013    0.0003     0.1444
+  Agg                4   100     0.0915    0.0008    0.0002     0.0229
+  AggCheck           4   100     0.5705    0.0018    0.0004     0.1426
+  Agg                8   100     0.1780    0.0013    0.0002     0.0222
+  AggCheck           8   100     1.1334    0.0025    0.0005     0.1417
+  Agg               16   100     0.3525    0.0018    0.0004     0.0220
+  AggCheck          16   100     2.2608    0.0056    0.0011     0.1413
+  Agg               32   100     0.6997    0.0019    0.0004     0.0219
+  AggCheck          32   100     4.5144    0.0048    0.0010     0.1411
+  Agg               64   100     1.4578    0.0095    0.0019     0.0228
+  AggCheck          64   100     9.1049    0.0165    0.0033     0.1423
+
+  negative control (tampered challenge list rejected): PASS
+
+  wrote rsu_results.csv and rsu_results_platform.json
