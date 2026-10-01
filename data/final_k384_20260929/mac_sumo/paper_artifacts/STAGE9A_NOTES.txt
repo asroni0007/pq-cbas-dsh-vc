@@ -1,0 +1,23 @@
+STAGE 9A — PAPER ARTIFACT NOTES
+================================
+
+Cross-device comparison:
+- Apple M2 and Raspberry Pi 5 use liboqs 0.16.0.
+- ESP32 uses the pinned PQClean clean implementation.
+- Ratios are measured cross-device stack costs, not
+  CPU-normalized speed ratios.
+
+ESP32:
+- Framework-sign is the length-equivalent signing-transcript
+  microbenchmark used in the final ESP32 experiment.
+- Timing outliers are retained.
+- No Fiat-Shamir rejection-loop counts were instrumented
+  directly; timing tails must not be assigned a causal
+  rejection-count interpretation.
+
+Execution-time budgets:
+- 5 msg/s  -> 200 ms signing budget
+- 10 msg/s -> 100 ms signing budget
+- 20 msg/s -> 50 ms signing budget
+- These are signing-budget exceedances, not network deadline
+  misses and not RSU-arrival-to-verdict measurements.

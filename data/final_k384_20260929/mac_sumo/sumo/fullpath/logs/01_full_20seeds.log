@@ -1,0 +1,85 @@
+liboqs-python faulthandler is disabled
+=== FINAL SUMO FULL-PATH BRIDGE ===
+Python             : 3.13.15
+liboqs-python     : 0.16.0.1
+liboqs            : 0.16.0
+Algorithm         : ML-DSA-65
+KAPPA             : 48 bytes
+process_window_full: (tuples, pk_CA, verifier)
+process_window_digest: (records, pk_CA, verifier)
+FCD entry events   : 2680
+FCD unique RSU veh : 2680
+Creating crypto identities: 2680
+  identities 500/2680
+  identities 1000/2680
+  identities 1500/2680
+  identities 2000/2680
+  identities 2500/2680
+  identities 2680/2680
+[seed 01/20] rng=7
+  messages=2680 accepted=2680 rejected=0 proc=0.261767ms latency=46.504912ms p99=89.324519 max=90.801548 miss=0
+[seed 02/20] rng=104
+  messages=2680 accepted=2680 rejected=0 proc=0.256072ms latency=46.264017ms p99=89.20116 max=90.489851 miss=0
+[seed 03/20] rng=201
+  messages=2680 accepted=2680 rejected=0 proc=0.250146ms latency=45.995393ms p99=89.539127 max=90.371288 miss=0
+[seed 04/20] rng=298
+  messages=2680 accepted=2680 rejected=0 proc=0.250379ms latency=46.493519ms p99=89.755527 max=90.460457 miss=0
+[seed 05/20] rng=395
+  messages=2680 accepted=2680 rejected=0 proc=0.254161ms latency=47.068646ms p99=89.528786 max=90.548521 miss=0
+[seed 06/20] rng=492
+  messages=2680 accepted=2680 rejected=0 proc=0.268496ms latency=46.566683ms p99=89.576884 max=90.416783 miss=0
+[seed 07/20] rng=589
+  messages=2680 accepted=2680 rejected=0 proc=0.259953ms latency=46.814502ms p99=89.683398 max=90.541548 miss=0
+[seed 08/20] rng=686
+  messages=2680 accepted=2680 rejected=0 proc=0.250847ms latency=46.421435ms p99=89.523575 max=90.469644 miss=0
+[seed 09/20] rng=783
+  messages=2680 accepted=2680 rejected=0 proc=0.250344ms latency=46.670622ms p99=89.550366 max=90.631904 miss=0
+[seed 10/20] rng=880
+  messages=2680 accepted=2680 rejected=0 proc=0.250958ms latency=46.35683ms p99=89.549725 max=90.475295 miss=0
+[seed 11/20] rng=977
+  messages=2680 accepted=2680 rejected=0 proc=0.253659ms latency=45.96901ms p99=89.351972 max=90.333523 miss=0
+[seed 12/20] rng=1074
+  messages=2680 accepted=2680 rejected=0 proc=0.251592ms latency=46.711441ms p99=89.756398 max=90.528057 miss=0
+[seed 13/20] rng=1171
+  messages=2680 accepted=2680 rejected=0 proc=0.252264ms latency=45.557586ms p99=89.323052 max=90.615194 miss=0
+[seed 14/20] rng=1268
+  messages=2680 accepted=2680 rejected=0 proc=0.254942ms latency=46.389073ms p99=89.469173 max=90.296088 miss=0
+[seed 15/20] rng=1365
+  messages=2680 accepted=2680 rejected=0 proc=0.257124ms latency=46.816392ms p99=89.485503 max=90.433803 miss=0
+[seed 16/20] rng=1462
+  messages=2680 accepted=2680 rejected=0 proc=0.250445ms latency=46.220746ms p99=89.536861 max=90.361417 miss=0
+[seed 17/20] rng=1559
+  messages=2680 accepted=2680 rejected=0 proc=0.253917ms latency=46.483027ms p99=89.362478 max=90.601567 miss=0
+[seed 18/20] rng=1656
+  messages=2680 accepted=2680 rejected=0 proc=0.248871ms latency=46.326125ms p99=89.317172 max=90.46353 miss=0
+[seed 19/20] rng=1753
+  messages=2680 accepted=2680 rejected=0 proc=0.250189ms latency=46.616726ms p99=89.552426 max=90.426667 miss=0
+[seed 20/20] rng=1850
+  messages=2680 accepted=2680 rejected=0 proc=0.2551ms latency=46.256936ms p99=89.57838 max=90.360666 miss=0
+
+=== SUMMARY ===
+{
+  "seeds": 20,
+  "messages_total": 53600,
+  "accepted_total": 53600,
+  "rejected_total": 0,
+  "windows_total": 36482,
+  "batch_mean": 1.4692,
+  "batch_p95_seed_mean": 3.0,
+  "batch_max": 6,
+  "latency_mean_ms": 46.425181,
+  "latency_mean_ci95_ms": 0.158869,
+  "latency_p95_seed_mean_ms": 86.257689,
+  "latency_p99_seed_mean_ms": 89.498324,
+  "latency_max_ms": 90.801548,
+  "proc_total_mean_ms": 0.254061,
+  "proc_total_p95_seed_mean_ms": 0.501348,
+  "proc_total_max_ms": 2.437708,
+  "proc_precheck_mean_ms": 0.074819,
+  "proc_aggregate_mean_ms": 0.046495,
+  "proc_aggverify_mean_ms": 0.132194,
+  "deadline_misses": 0,
+  "miss_rate_pct": 0.0
+}
+
+Saved: rerun/final_k384/sumo/fullpath/sumo_fullpath_W90_full_20seeds.json

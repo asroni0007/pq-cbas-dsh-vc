@@ -1,0 +1,14 @@
+liboqs-python faulthandler is disabled
+Python         : 3.13.15
+OS             : macOS-26.6-arm64-arm-64bit-Mach-O
+Machine        : arm64
+liboqs-python : 0.16.0.1
+liboqs        : 0.16.0
+Algorithm      : ML-DSA-65
+KAPPA          : 384 bit / 48 B
+Full wire      : 8694 B
+Digest wire    : 3465 B
+Window         : 90 ms
+Deadline       : 100 ms
+RSU            : (80,36), R=150 m
+SUMO           : 1.26.0 fixed FCD

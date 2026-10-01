@@ -1,0 +1,10 @@
+Wilson score intervals are calculated for the observed
+fraction of ESP32 framework-sign execution times exceeding
+fixed execution-time budgets.
+
+These are signing-budget exceedances only. They are not
+wireless packet-loss events, network deadline misses, or
+RSU-arrival-to-verdict deadline misses.
+
+The framework-sign benchmark is the final length-equivalent
+signing-transcript microbenchmark with n=500 retained samples.

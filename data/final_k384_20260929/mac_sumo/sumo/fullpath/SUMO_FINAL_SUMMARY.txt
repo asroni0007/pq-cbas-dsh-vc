@@ -1,0 +1,49 @@
+================================================================================
+FULL
+================================================================================
+SUMO trace               : fixed SUMO 1.26.0 FCD
+RSU entries              : 2680
+Seeds                    : 20
+Messages evaluated       : 53600
+Accepted                 : 53600
+Rejected                 : 0
+Batch mean               : 1.4692
+Batch p95                : 3.0
+Batch max                : 6
+Processing mean (ms)     : 0.254061
+Processing max (ms)      : 2.437708
+Latency mean (ms)        : 46.425181
+Latency CI95 (ms)        : 0.158869
+Latency p95 (ms)         : 86.257689
+Latency p99 (ms)         : 89.498324
+Latency max (ms)         : 90.801548
+Deadline misses          : 0
+Miss rate (%)            : 0.0
+
+================================================================================
+DIGEST
+================================================================================
+SUMO trace               : fixed SUMO 1.26.0 FCD
+RSU entries              : 2680
+Seeds                    : 20
+Messages evaluated       : 53600
+Accepted                 : 53600
+Rejected                 : 0
+Batch mean               : 1.4692
+Batch p95                : 3.0
+Batch max                : 6
+Processing mean (ms)     : 0.179592
+Processing max (ms)      : 1.42025
+Latency mean (ms)        : 46.331371
+Latency CI95 (ms)        : 0.158294
+Latency p95 (ms)         : 86.172922
+Latency p99 (ms)         : 89.415173
+Latency max (ms)         : 90.433112
+Deadline misses          : 0
+Miss rate (%)            : 0.0
+
+Interpretation note:
+- Transport/PHY/MAC delay is excluded.
+- Seeds vary only +/-10 ms scheduling jitter over one fixed FCD.
+- Seeds are NOT independent mobility traces.
+- Timed path includes precheck/cache -> Sort -> Agg -> AggVerify -> verdict.
