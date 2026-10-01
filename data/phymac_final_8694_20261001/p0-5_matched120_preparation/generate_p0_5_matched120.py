@@ -7,13 +7,10 @@ import math
 import re
 import shutil
 
-RAW = Path(
-    "/Volumes/Ext_White/pq-cbas-dsh-vc-65B7/"
-    "final_archive_20260929/"
-    "PQCBAS_PHYMAC_RAW_120RUN_LEGACY_20260813.zip"
-)
+# Local paths: set these to where the legacy raw archive and a scratch directory live.
+RAW = Path("final_archive_20260929/PQCBAS_PHYMAC_RAW_120RUN_LEGACY_20260813.zip")
 
-WORK = Path("/Users/asroni/pqcbas-p0-5-matched120")
+WORK = Path.home() / "pqcbas-p0-5-matched120"
 RUNS = WORK / "runs"
 
 PREFIX = "generated_runs_macmetrics_core/"
