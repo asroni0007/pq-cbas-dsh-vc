@@ -1,0 +1,43 @@
+{
+  "source_log": "rerun/final_k384/esp32/diagnostic/logs/08_core_sign_diag.log",
+  "extracted_log": "rerun/final_k384/esp32/final/esp32_final_success_run.log",
+  "raw_validation": {
+    "RAW_SIGN": {
+      "parsed": 500,
+      "unique": 500,
+      "missing": [],
+      "duplicates": [],
+      "status": "OK"
+    },
+    "RAW_FRAME_SIGN": {
+      "parsed": 500,
+      "unique": 500,
+      "missing": [],
+      "duplicates": [],
+      "status": "OK"
+    },
+    "RAW_VERIFY": {
+      "parsed": 498,
+      "unique": 498,
+      "missing": [
+        340,
+        341
+      ],
+      "duplicates": [],
+      "status": "PARTIAL"
+    }
+  },
+  "configuration_checks": {
+    "platform": true,
+    "algorithm": true,
+    "commit": true,
+    "kappa_48": true,
+    "n_sign_500": true,
+    "n_frame_500": true,
+    "n_verify_500": true,
+    "marker": true
+  },
+  "raw_complete": false,
+  "configuration_valid": true,
+  "final_marker": true
+}

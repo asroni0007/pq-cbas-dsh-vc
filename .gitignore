@@ -1,0 +1,11 @@
+venv/
+.deps/
+build/
+__pycache__/
+*.pyc
+*.zip
+*.sca
+*.vec
+*.vci
+.DS_Store
+._*

@@ -1,0 +1,22 @@
+=== ESP32 FINAL PREFLIGHT ===
+Tue Sep 29 17:29:16 WIB 2026
+
+PORT:
+crw-rw-rw-  1 root  wheel  0x9000009 Sep 29 11:14 /dev/cu.usbserial-0001
+
+ARDUINO CLI:
+arduino-cli  Version: 1.5.1 Commit: Homebrew Date: 2026-06-05T09:39:33Z
+
+ESP32 CORE:
+esp32:esp32     3.3.11    3.3.11 esp32
+
+BOARD:
+DOIT ESP32 DEVKIT V1                        esp32:esp32:esp32doit-devkit-v1
+
+PQCLEAN COMMIT:
+0586a824fc0d49df0b6b6e9179d8d15d06d0974f
+
+ML-DSA-65:
+#define PQCLEAN_MLDSA65_CLEAN_CRYPTO_PUBLICKEYBYTES 1952
+#define PQCLEAN_MLDSA65_CLEAN_CRYPTO_SECRETKEYBYTES 4032
+#define PQCLEAN_MLDSA65_CLEAN_CRYPTO_BYTES 3309

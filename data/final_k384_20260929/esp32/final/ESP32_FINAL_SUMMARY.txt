@@ -1,0 +1,76 @@
+PQ-CBAS-DSH — ESP32 FINAL MEASUREMENT
+=====================================
+
+Platform
+--------
+Device class      : microcontroller-class
+Algorithm         : ML-DSA-65
+CPU               : 240 MHz
+PQClean commit    : 0586a824fc0d49df0b6b6e9179d8d15d06d0974f
+Security profile  : kappa=384 bit / 48 B
+
+ML-DSA-65 Sizes
+---------------
+Public key        : 1952 B
+Secret key        : 4032 B
+Signature         : 3309 B
+
+Framework
+---------
+Sign input        : 7353 B
+
+Samples
+-------
+Core sign         : 500
+Framework sign    : 500
+Verify            : 500
+
+Core ML-DSA-65 Sign
+-------------------
+Mean              : 87.970336 ms
+SD                : 53.723845 ms
+p95               : 184.582650 ms
+p99               : 281.403080 ms
+Max               : 397.491000 ms
+
+Framework Sign
+--------------
+Mean              : 92.945102 ms
+SD                : 57.638476 ms
+p95               : 205.999300 ms
+p99               : 285.502070 ms
+Max               : 504.845000 ms
+
+ML-DSA-65 Verify
+----------------
+Mean              : 27.666296 ms
+SD                : 0.003009 ms
+p95               : 27.667000 ms
+p99               : 27.667000 ms
+Max               : 27.733000 ms
+
+Memory
+------
+Heap free         : 147572 B
+Minimum heap      : 116212 B
+
+Methodological Notes
+--------------------
+- Timing outliers are retained.
+- Framework-sign measures the configured framework-sign
+  microbenchmark and must not be described as wireless
+  end-to-end latency.
+- The benchmark does not directly instrument internal
+  Fiat-Shamir rejection-loop counts. Timing tails therefore
+  must not be attributed causally to a specific rejection
+  count without additional instrumentation.
+
+Raw capture
+-----------
+RAW_SIGN          : OK
+RAW_FRAME_SIGN    : OK
+RAW_VERIFY        : PARTIAL
+
+Final firmware marker
+---------------------
+ESP32_FINAL_BENCHMARK_OK

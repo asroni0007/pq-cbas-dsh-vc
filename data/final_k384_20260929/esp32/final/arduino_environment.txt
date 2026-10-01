@@ -1,0 +1,31 @@
+=== DATE ===
+Tue Sep 29 17:17:00 WIB 2026
+
+=== ARDUINO CLI ===
+arduino-cli  Version: 1.5.1 Commit: Homebrew Date: 2026-06-05T09:39:33Z
+
+=== ESP32 CORE ===
+esp32:esp32     3.3.11    3.3.11 esp32
+
+=== USB PORT ===
+crw-rw-rw-  1 root  wheel  0x9000009 Sep 29 11:14 /dev/cu.usbserial-0001
+
+=== BOARD CANDIDATES ===
+DOIT ESP32 DEVKIT V1                        esp32:esp32:esp32doit-devkit-v1
+DOIT ESPduino32                             esp32:esp32:esp32doit-espduino
+ESP32 Dev Module                            esp32:esp32:esp32
+ESP32 FM DevKit                             esp32:esp32:fm-devkit
+ESP32-WROOM-DA Module                       esp32:esp32:esp32da
+ESP32S3 Dev Module Octal (WROOM2)           esp32:esp32:esp32s3-octal
+Fri3d Badge 2024 (ESP32-S3-WROOM-1)         esp32:esp32:fri3d_2024_esp32s3
+MH ET LIVE ESP32DevKIT                      esp32:esp32:mhetesp32devkit
+OLIMEX ESP32-C3-DevKit-Lipo                 esp32:esp32:esp32c3-devkitlipo
+OLIMEX ESP32-DevKit-LiPo                    esp32:esp32:esp32-devkitlipo
+OLIMEX ESP32-H2-DevKit-LiPo                 esp32:esp32:esp32h2-devkitlipo
+OLIMEX ESP32-S2-DevKit-Lipo                 esp32:esp32:esp32s2-devkitlipo
+OLIMEX ESP32-S2-DevKit-Lipo-USB             esp32:esp32:esp32s2-devkitlipo-usb
+OLIMEX ESP32-S3-DevKit-Lipo                 esp32:esp32:esp32s3-devkitlipo
+Onehorse ESP32 Dev Module                   esp32:esp32:onehorse32dev
+VintLabs ESP32 Devkit                       esp32:esp32:vintlabs-devkit-v1
+uPesy ESP32 Wroom DevKit                    esp32:esp32:uPesy_wroom
+uPesy ESP32 Wrover DevKit                   esp32:esp32:uPesy_wrover
