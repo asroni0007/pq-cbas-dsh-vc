@@ -1,0 +1,27 @@
+P0-5 MATCHED 120-RUN PREPARATION
+================================
+Wed Sep 30 21:58:07 WIB 2026
+
+Historical raw source:
+/Volumes/Ext_White/pq-cbas-dsh-vc-65B7/final_archive_20260929/PQCBAS_PHYMAC_RAW_120RUN_LEGACY_20260813.zip
+
+Historical raw SHA:
+0ed015e55e05de963c3cdb88210ee2b43d66c52d29bc74fdeb487f6be33a6bf6  /Volumes/Ext_White/pq-cbas-dsh-vc-65B7/final_archive_20260929/PQCBAS_PHYMAC_RAW_120RUN_LEGACY_20260813.zip
+
+New matrix:
+small=300B/1 fragment
+digest=3465B/3 fragments
+full=8694B/8 fragments
+
+targets=10,25,50,100
+scales=0.4,1.0,2.0,4.0
+seeds=1..10
+PHY=6Mbps
+logicalRate=10Hz
+simulationTime=120s
+deadline=100ms
+reassemblyTimeout=500ms
+
+Total runs=120
+
+Historical raw archive is never overwritten.

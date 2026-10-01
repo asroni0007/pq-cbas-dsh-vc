@@ -1,0 +1,22 @@
+{
+ "FRA": 0,
+ "TCSA": 0,
+ "TCSA_component_mix": {
+  "sigma": 2468,
+  "m": 2551,
+  "fresh": 2474,
+  "identity": 2507
+ },
+ "CCSA_with_DSH": 0,
+ "CCSA_control_without_DSH": 10000,
+ "AMA_mutation": 0,
+ "AMA_substitution": 0,
+ "trials": 10000,
+ "independent_inputs_per_trial": true,
+ "cp95_upper_bound_zero_successes": 0.00029952835977664627,
+ "alg": "ML-DSA-65",
+ "liboqs": "0.16.0",
+ "liboqs_python": "0.16.0.1",
+ "python": "3.11.15",
+ "note": "correctness experiment; host-independent"
+}

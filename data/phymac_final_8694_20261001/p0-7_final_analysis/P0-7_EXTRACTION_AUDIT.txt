@@ -1,0 +1,11 @@
+P0-7 FINAL PHY/MAC EXTRACTION
+=============================
+Runs parsed: 120
+Cells summarized: 12
+small=300B/1 fragment
+digest=3465B/3 fragments
+full=8694B/8 fragments
+
+Rates use generatedLogicalInRsuCoverage as denominator unless stated otherwise.
+MAC queue means are weighted by per-module sample counts.
+No causal interpretation is made at this extraction stage.

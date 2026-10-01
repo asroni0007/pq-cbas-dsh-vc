@@ -1,0 +1,7 @@
+6fff40d03d2a5afb74f9c6a11554a6d1fbee65f1318eae5784c483568f551c7a  /Volumes/Ext_White/pq-cbas-dsh-vc-65B7/rerun/final_k384/phymac_final_8694/p0-7_final_analysis/P0-7_FINAL_120_RUNS.csv
+c2ac678927ac5f497966c01cd1c1ed95ed224a062708d473e160a3eef89b4886  /Volumes/Ext_White/pq-cbas-dsh-vc-65B7/rerun/final_k384/phymac_final_8694/p0-7_final_analysis/P0-7_FINAL_12_CELL_SUMMARY.csv
+4debf795e79f5534af423f249333a63aa2a8cedbe084d915b78df38bde04ba59  /Volumes/Ext_White/pq-cbas-dsh-vc-65B7/rerun/final_k384/phymac_final_8694/p0-7_final_analysis/P0-7_PAPER_COMPACT_TABLE.csv
+2747dace3b1be853814e62566207c29e012f3bdb033c59979b42cdc662bef5a2  /Volumes/Ext_White/pq-cbas-dsh-vc-65B7/rerun/final_k384/phymac_final_8694/p0-7_final_analysis/P0-7_PAIRED_SEED_DIFFERENCES.csv
+d2ae675c799b3387c90b292a847cc455bf4ff211198b36e23daf86b1f8384ca5  /Volumes/Ext_White/pq-cbas-dsh-vc-65B7/rerun/final_k384/phymac_final_8694/p0-7_final_analysis/P0-7_PAIRED_SIGN_TEST.csv
+bed82980b95dd33f184a3487f179d9412982f6d2082ba6bbf20f5f61984c8678  /Volumes/Ext_White/pq-cbas-dsh-vc-65B7/rerun/final_k384/phymac_final_8694/p0-7_final_analysis/P0-7_FINAL_PHYMAC_PAPER_TABLE.csv
+c7459b71050bc7cb96b4c311d39784957ae9320378c4ded00d0f09df8715f831  /Volumes/Ext_White/pq-cbas-dsh-vc-65B7/rerun/final_k384/phymac_final_8694/p0-7_final_analysis/P0-7_EXTRACTION_AUDIT.txt

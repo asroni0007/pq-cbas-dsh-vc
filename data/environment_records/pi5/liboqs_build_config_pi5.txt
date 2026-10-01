@@ -1,0 +1,12 @@
+Raspberry Pi 5 liboqs build record (captured 2026-10-01 from ~/_oqs/include/oqs/oqsconfig.h)
+Benchmark venv: ~/.venvs/pqcbas-final-pi (Python 3.11.2, liboqs-python 0.16.0.1, liboqs 0.16.0)
+
+#define OQS_VERSION_TEXT "0.16.0"
+#define OQS_DIST_BUILD 1
+#define OQS_OPT_TARGET "generic"
+#define OQS_USE_OPENSSL 1                      <-- differs from the M2 build (OpenSSL not used there)
+OQS_USE_ARM_AES / ARM_SHA2 / ARM_SHA3 / ARM_NEON _INSTRUCTIONS: undefined in this configuration
+#define OQS_ENABLE_SIG_ml_dsa_65 1
+OQS_ENABLE_SIG_ml_dsa_65_x86_64: undefined;  #define OQS_ENABLE_SIG_ml_dsa_65_aarch64 1
+
+Not verified: which ML-DSA implementation (reference C vs mldsa-native aarch64) executes at run time.

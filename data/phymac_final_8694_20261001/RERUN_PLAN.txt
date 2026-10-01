@@ -1,0 +1,66 @@
+PQ-CBAS-DSH FINAL-PROFILE PHY/MAC CONTROLLED RERUN
+==================================================
+
+Primary purpose
+---------------
+Close the remaining final-profile PHY/MAC validation gap.
+
+Experimental comparison
+-----------------------
+small:
+  logical object = 300 B
+  application fragment payload = 1200 B
+  fragments = 1
+
+digest:
+  logical object = 3465 B
+  application fragment payload = 1200 B
+  fragments = 3
+
+full_final:
+  logical object = 8694 B
+  application fragment payload = 1200 B
+  fragments = 8
+
+Operating point
+---------------
+PHY rate = 6 Mbit/s
+logical generation rate = 10 Hz
+configured density targets = 10, 25, 50, 100
+matched seeds = 1 through 10
+duration = 120 s
+
+Expected run matrix
+-------------------
+3 modes x 4 configured densities x 10 matched seeds = 120 runs
+
+Controlled-change rule
+----------------------
+The primary rerun should preserve the historical PHY/MAC configuration
+and change the FULL logical-object size from the legacy redundant
+10,662-B representation to the canonical final 8,694-B representation.
+
+DIGEST remains 3,465 B.
+Small baseline remains 300 B.
+Application fragment payload remains 1,200 B.
+
+Do not introduce the 2,304-B fragmentation sensitivity in this primary
+rerun. It should be treated as a separate experiment if performed.
+
+Raw preservation policy
+-----------------------
+Preserve:
+- every rendered omnetpp.ini
+- SUMO/Veins configuration
+- source code used for the run
+- .sca
+- .vec
+- .vci when generated
+- stdout/stderr logs
+- processed per-run CSV
+- summary statistics
+- paired statistical tests
+- software/environment versions
+- SHA-256 manifests
+
+Historical 10,662-B results must not be overwritten.
