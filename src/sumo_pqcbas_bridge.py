@@ -32,8 +32,9 @@ H_CERT = b"PQ-CBAS-DSH/CERT"
 H_SIGN = b"PQ-CBAS-DSH/SIGN"
 H_AGG  = b"PQ-CBAS-DSH/AGG"
 DEADLINE_MS = 100.0
+KAPPA = 48
 
-def xof(domain, data, n=32):
+def xof(domain, data, n=KAPPA):
     return hashlib.shake_256(domain + data).digest(n)
 
 # ------------------------------------------------------------------ SUMO runner

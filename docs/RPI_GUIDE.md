@@ -43,7 +43,7 @@ sudo apt install -y libraspberrypi-bin
 Dari MacBook:
 
 ```bash
-ART="/Users/asroni/Documents/S3_DTETI_UGM/SH 2/P5/PQ-CBAS-DSH_artifact-3"
+ART="$HOME/pq-cbas-dsh-vc"   # path of this repository on the Mac
 
 rsync -av --exclude venv --exclude liboqs --exclude '*.pyc' \
   "$ART/" pi@raspberrypi.local:~/PQ-CBAS-DSH/

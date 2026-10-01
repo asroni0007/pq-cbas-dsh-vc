@@ -1,0 +1,6 @@
+#ifndef PQCLEAN_COMMIT_H
+#define PQCLEAN_COMMIT_H
+
+#define PQCLEAN_COMMIT "0586a824fc0d49df0b6b6e9179d8d15d06d0974f"
+
+#endif

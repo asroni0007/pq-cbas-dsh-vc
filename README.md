@@ -1,92 +1,46 @@
-# PQ-CBAS-DSH — Research Artifact
+# PQ-CBAS-DSH — Research Artifact (v1.3.0, final κ = 384 profile)
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.21805963.svg)](https://doi.org/10.5281/zenodo.21805963)
-
-![PQ-CBAS-DSH architecture: CA, OBU, RSU, CS pipeline across three measured device classes](docs/images/repo_banner.png)
-
-Reproducible source code and measurement artifact for:
+Reproducible measurement artifact for:
 
 > **What Post-Quantum Authentication Costs in a VANET: Measuring ML-DSA-65 Across Device Classes in a Certificate-Based Batched-Verification Framework**
 > Asroni, Selo Sulistyo, Sigit B. Wibowo — submitted to *Vehicular Communications*.
 
-Measurements cover three directly measured device classes: desktop-class Apple silicon (CA/CS), a microcontroller-class ESP32 (OBU), and an embedded Linux-class Raspberry Pi 5 (RSU).
+DOI: add the version DOI that Zenodo issues for release `v1.3.0` (the earlier DOI 10.5281/zenodo.21805963 archives v1.2.0, see "Versions").
 
-## Contents
+## What is where
 
-```
-src/         measurement code (Python)
-esp32/       microcontroller-class OBU benchmark (Arduino IDE)
-sumo/        StudyArea network, demand, and SUMO configuration
-scripts/     run wrappers and release checks
-results/     raw outputs underlying Tables 5-13 (Apple M2, ESP32, and
-             Raspberry Pi 5 device classes; see results/rpi5_20260928/)
-docs/        platform setup guides (docs/RPI_GUIDE.md)
-```
-
-The manuscript source (LaTeX) is not required to run the artifact.
-
-## Requirements
-
-| Component | Version / requirement |
+| Folder | Content |
 |---|---|
-| Python | 3.11+ |
-| liboqs | 0.15.0 (pinned for manuscript reproduction on desktop/RSU hosts) |
-| liboqs-python | 0.16.0.1 (prebuilt ARM64 wheel from piwheels.org on Raspberry Pi; see `docs/RPI_GUIDE.md`) |
-| numpy | see `requirements.txt` |
-| SUMO | 1.26 (mobility trace) / 1.22.0 (OMNeT++/Veins coupling) |
-| OMNeT++ | 6.1 |
-| Veins | 5.3.1 |
-| ESP32 toolchain | ESP-IDF v5.5.5 (PQClean reference ML-DSA-65) |
+| `data/` | All data behind the reported numbers (see `data/README_SUPPLEMENTARY.md` for the table-to-source map): final κ = 384 runs on Apple M2, Raspberry Pi 5 and ESP32; Pi 5 repeat with thermal log (1 Oct 2026); liboqs build configurations; final PHY/MAC matrix (120 runs, per-run CSV, cell summaries, sign test); ESP32 ECDSA-P256 baseline logs |
+| `src/` | Final benchmark and harness sources (Python). `transport_budget_STALE_unused.py` is kept for history only |
+| `esp32/PQCBAS_ESP32_Final/` | ML-DSA-65 firmware (PQClean commit `0586a824`, arduino-cli 1.5.1, esp32 core 3.3.11) |
+| `esp32/PQCBAS_ESP32_ECDSA_baseline/` | ECDSA-P256 (mbedTLS as shipped in the core) sketch, two serial logs, parse script |
+| `sumo/` | StudyArea network, demand and SUMO configuration |
+| `scripts/`, `docs/` | Run wrappers; Raspberry Pi guide |
+| `legacy_v1.2.0_liboqs0.15/` | Superseded v1.2.0 results (liboqs 0.15.0). **Not used for any reported value** |
 
-Install Python dependencies:
+## Environment of the reported data
 
-```bash
-pip install -r requirements.txt
-```
+Apple M2: liboqs 0.16.0, liboqs-python 0.16.0.1, Python 3.13.15. Raspberry Pi 5: Debian 12, kernel 6.6.51, `performance` governor, Python 3.11.2. ESP32: Arduino-ESP32 core 3.3.11 (SDK v5.5.5). Both liboqs builds are generic distribution builds; the Pi build uses OpenSSL and the M2 build does not; which ML-DSA code path ran at run time was not verified (`data/environment_records/`). Pi-to-M2 ratios therefore compare builds as well as hardware.
 
-## Reproducing the results
+## Known limitations of this artifact
 
-```bash
-# Build liboqs and run the operation-level benchmark, aggregation behavior,
-# and security experiments (Tables 5, 7-8, 17-18) on a desktop-class host
-bash scripts/run_bench.sh
+- One unit per device class.
+- Raw OMNeT++/Veins `.sca/.vec` files and the 62 MB SUMO FCD file are not included (checksums are recorded); the per-run PHY/MAC analysis is.
+- `scripts/` were updated from liboqs 0.15.0 to 0.16.0 to match the reported data and were not re-run end to end after that change; the reported values come from the archived raw outputs in `data/`.
+- ECDSA-P256 on the ESP32 is the unmodified mbedTLS of the core, not an optimized library.
 
-# End-to-end latency, uniform arrivals (Tables 9-10)
-bash scripts/run_seeds.sh 20 90
-
-# End-to-end latency on the SUMO mobility trace (Table 13)
-python3 src/sumo_pqcbas_bridge.py --window 90 --seeds 20
-
-# Transport-inclusive latency budget (analytic model, Section 7.8)
-python3 src/transport_budget.py
-
-# RSU-class hardware measurement (Table 5 third column, Table 8) on a
-# Raspberry Pi — see docs/RPI_GUIDE.md for setup. A completed run is
-# archived at results/rpi5_20260928/.
-bash scripts/run_rpi.sh 20 90
-
-# Microcontroller-class OBU benchmark (Table 6): flash and run
-# esp32/PQCBAS_ESP32_Bench/PQCBAS_ESP32_Bench.ino via the Arduino IDE
-```
-
-All reported values in the manuscript can be regenerated from these scripts.
-Confidence intervals use a Student-t multiplier at df = n-1 throughout.
-
-The 120-run SUMO--OMNeT++--Veins transport-inclusive confirmatory evaluation
-(Table 20, Section 7.13 of the manuscript) is not yet included in `results/`
-and will be added to this repository and the permanent archive DOI upon
-acceptance, per the manuscript's Data Availability statement.
-
-## Verifying integrity
+## Integrity
 
 ```bash
 sha256sum -c SHA256SUMS.txt
 ```
 
-## Citation
+## Versions
 
-If you use this artifact, please cite the manuscript (see `CITATION.cff`).
+- v1.3.0 (1 Oct 2026): final κ = 384 data, Pi 5 repeat, build configurations, final PHY/MAC matrix, ESP32 ECDSA baseline.
+- v1.2.0 (28 Sep 2026, DOI 10.5281/zenodo.21805963): earlier liboqs 0.15.0 results; superseded.
 
 ## License
 
-See `LICENSE`.
+MIT, see `LICENSE`.

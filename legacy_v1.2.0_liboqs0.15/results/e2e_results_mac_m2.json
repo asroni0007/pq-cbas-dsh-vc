@@ -1,0 +1,64 @@
+{
+ "window_ms": 100.0,
+ "alg": "ML-DSA-65",
+ "host": "Apple M2 MacBook Air, macOS 26.4.1, Python 3.13.13, liboqs 0.15.0",
+ "note": "Transcribed from the author's terminal run; regenerate with src/e2e_workflow.py.",
+ "results": [
+  {
+   "scenario": "highway-n20",
+   "vehicles": 20,
+   "messages": 1586,
+   "attacks": 0,
+   "t_avg": 17.8,
+   "wait_mean_ms": 50.7,
+   "proc_mean_ms": 2.09,
+   "e2e_mean_ms": 52.9,
+   "e2e_p95_ms": 97.7,
+   "under_100ms_pct": 97.4,
+   "accepted": 1586,
+   "rejected": 0
+  },
+  {
+   "scenario": "highway-n20-attack",
+   "vehicles": 20,
+   "messages": 1865,
+   "attacks": 200,
+   "t_avg": 17.9,
+   "wait_mean_ms": 51.1,
+   "proc_mean_ms": 1.8,
+   "e2e_mean_ms": 53.0,
+   "e2e_p95_ms": 97.8,
+   "under_100ms_pct": 97.7,
+   "accepted": 1665,
+   "rejected": 200
+  },
+  {
+   "scenario": "urban-n30",
+   "vehicles": 30,
+   "messages": 2210,
+   "attacks": 0,
+   "t_avg": 21.9,
+   "wait_mean_ms": 49.9,
+   "proc_mean_ms": 2.55,
+   "e2e_mean_ms": 52.6,
+   "e2e_p95_ms": 97.5,
+   "under_100ms_pct": 97.3,
+   "accepted": 2210,
+   "rejected": 0
+  },
+  {
+   "scenario": "intersection-n15",
+   "vehicles": 15,
+   "messages": 1478,
+   "attacks": 0,
+   "t_avg": 24.6,
+   "wait_mean_ms": 49.4,
+   "proc_mean_ms": 2.64,
+   "e2e_mean_ms": 52.3,
+   "e2e_p95_ms": 98.3,
+   "under_100ms_pct": 96.9,
+   "accepted": 1478,
+   "rejected": 0
+  }
+ ]
+}

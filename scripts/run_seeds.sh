@@ -17,7 +17,7 @@ cd "$ROOT_DIR"
 
 SEEDS="${1:-20}"
 W="${2:-90}"
-OQS_PREFIX="${OQS_PREFIX:-$HOME/oqs-0.15.0}"
+OQS_PREFIX="${OQS_PREFIX:-$HOME/oqs-0.16.0}"
 
 if [ ! -d "$OQS_PREFIX/lib" ]; then
   echo "liboqs tidak ditemukan di $OQS_PREFIX — jalankan 'bash scripts/run_bench.sh' dulu." >&2

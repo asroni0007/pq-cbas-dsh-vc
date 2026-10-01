@@ -19,7 +19,7 @@ cd "$ROOT_DIR"
 
 SEEDS="${1:-20}"
 W="${2:-90}"
-OQS_PREFIX="${OQS_PREFIX:-$HOME/oqs-0.15.0}"
+OQS_PREFIX="${OQS_PREFIX:-$HOME/oqs-0.16.0}"
 STAMP="$(date +%Y%m%d_%H%M%S)"
 OUT="results_rpi_${STAMP}"
 mkdir -p "$OUT"

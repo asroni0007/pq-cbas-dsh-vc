@@ -37,6 +37,7 @@ ALG = "ML-DSA-65"
 H_CERT = b"PQ-CBAS-DSH/CERT"
 H_SIGN = b"PQ-CBAS-DSH/SIGN"
 DEADLINE = 100.0
+KAPPA = 48
 
 ap = argparse.ArgumentParser()
 ap.add_argument("--window", type=float, default=100.0, help="collection window W (ms)")
@@ -53,7 +54,7 @@ ARGS = ap.parse_args()
 W = ARGS.window
 
 
-def xof(domain: bytes, data: bytes, n: int = 32) -> bytes:
+def xof(domain: bytes, data: bytes, n: int = KAPPA) -> bytes:
     return hashlib.shake_256(domain + data).digest(n)
 
 

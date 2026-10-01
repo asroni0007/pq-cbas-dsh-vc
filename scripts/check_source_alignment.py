@@ -67,9 +67,9 @@ for script in ("run_bench.sh", "run_seeds.sh", "run_rpi.sh"):
     ok("ROOT_DIR=" in text and 'cd "$ROOT_DIR"' in text, f"{script} resolves repository root")
 
 run_bench = (ROOT / "scripts" / "run_bench.sh").read_text()
-ok("--branch 0.15.0" in run_bench, "run_bench pins liboqs 0.15.0")
-ok("oqs-0.15.0" in run_bench, "run_bench uses a version-specific default prefix")
-ok('startswith("0.15.0")' in run_bench, "run_bench validates the loaded liboqs runtime version")
+ok("--branch 0.16.0" in run_bench, "run_bench pins liboqs 0.16.0")
+ok("oqs-0.16.0" in run_bench, "run_bench uses a version-specific default prefix")
+ok('startswith("0.16.0")' in run_bench, "run_bench validates the loaded liboqs runtime version")
 ok("cryptography" in run_bench, "run_bench installs the ECDSA baseline dependency")
 
 e2e = (ROOT / "src" / "e2e_workflow.py").read_text()

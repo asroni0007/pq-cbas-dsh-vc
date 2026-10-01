@@ -17,7 +17,8 @@ N = 256
 CT_LEN = 48               # c_tilde bytes (lambda/4 = 192/4)
 Z_LEN = L * N * 20 // 8   # 3200 B (20-bit packing)
 HINT_LEN = 55 + 6         # omega + k = 61 B
-KAPPA = 32
+KAPPA = 48
+
 
 def xof(domain: bytes, data: bytes, outlen=KAPPA) -> bytes:
     return hashlib.shake_256(domain + data).digest(outlen)
@@ -77,9 +78,17 @@ def obu_sign(signer, ID, m, pk, cert, fresh):
 def make_tuple(ID, m, pk, cert, sigma, fresh):
     return {"ID": ID, "m": m, "pk": pk, "cert": cert, "sigma": sigma, "fresh": fresh}
 
-# Wire-size serialization retained only for byte counts reported in the paper.
-def ser_tuple(T):
-    return T["ID"] + T["m"] + T["pk"] + T["cert"][0] + T["cert"][1] + T["cert"][2] + T["sigma"] + T["fresh"]
+# Canonical network serialization for the final deployment profile.
+# ID and public key are already contained in Cert and therefore are not
+# repeated in the outer full-wire representation.
+def ser_wire_full(T):
+    cert_raw = T["cert"][0] + T["cert"][1] + T["cert"][2]
+    return T["m"] + cert_raw + T["sigma"] + T["fresh"]
+
+def ser_wire_digest(T):
+    cert_raw = T["cert"][0] + T["cert"][1] + T["cert"][2]
+    cert_id = xof(H_CERT, cert_raw)
+    return T["m"] + cert_id + T["sigma"] + T["fresh"]
 
 # Assumption A3: canonical, prefix-free full-tuple transcript encoding.
 # Variable-length fields are prefixed by an unsigned 32-bit big-endian length.
@@ -198,9 +207,22 @@ def main():
     # tuple/cert sizes
     sigma = obu_sign(s, ID, msg, pk, cert, fresh)
     T0 = make_tuple(ID, msg, pk, cert, sigma, fresh)
-    out["sizes"] = {"pk": len(pk), "sig": len(sigma),
-                    "cert": len(cert[0]) + len(cert[1]) + len(cert[2]),
-                    "tuple": len(ser_tuple(T0))}
+    cert_size = len(cert[0]) + len(cert[1]) + len(cert[2])
+    full_size = len(ser_wire_full(T0))
+    digest_size = len(ser_wire_digest(T0))
+
+    assert full_size == 8694, f"unexpected final full-wire size: {full_size}"
+    assert digest_size == 3465, f"unexpected final digest-wire size: {digest_size}"
+
+    out["sizes"] = {
+        "pk": len(pk),
+        "sig": len(sigma),
+        "cert": cert_size,
+        "hash_bytes": KAPPA,
+        "tuple": full_size,
+        "full_wire": full_size,
+        "digest_wire": digest_size,
+    }
 
     # aggregation behavior for m in 1,2,5,10
     out["agg"] = {}
@@ -255,8 +277,10 @@ def main():
         i = rng.randrange(len(blob)); b = bytearray(blob); b[i] ^= 0xFF
         nz = len(agg["bar_z"]) * 4
         bz = np.frombuffer(bytes(b[:nz]), dtype=np.int32).astype(np.int64)
-        C = bytes(b[nz:nz + len(agg["C"])]); eta = bytes(b[nz + len(agg["C"]):nz + len(agg["C"]) + 32])
-        tau = bytes(b[-32:])
+        C = bytes(b[nz:nz + len(agg["C"])])
+        eta_start = nz + len(agg["C"])
+        eta = bytes(b[eta_start:eta_start + KAPPA])
+        tau = bytes(b[-KAPPA:])
         mutated = {"bar_z": bz, "C": C, "eta": eta, "tau": tau}
         if aggverify(pp, mutated, ts, verify_sigs=False):  # structural checks reject before sig verify
             ok += 1
@@ -290,10 +314,10 @@ def main():
             for d in data: fn(d)
             ts.append(time.perf_counter_ns()-t0)
         return _st.median(ts)
-    plain=_hb(lambda d: hashlib.shake_256(d).digest(32))
-    dsh=_hb(lambda d: hashlib.shake_256(H_SIGN+d).digest(32))
-    nonce_det=len({hashlib.shake_256(b"PQ-CBAS-DSH/NONCE"+i.to_bytes(8,"big")).digest(32) for i in range(10000)})
-    nonce_rnd=len({secrets.token_bytes(32) for _ in range(10000)})
+    plain=_hb(lambda d: hashlib.shake_256(d).digest(KAPPA))
+    dsh=_hb(lambda d: hashlib.shake_256(H_SIGN+d).digest(KAPPA))
+    nonce_det=len({hashlib.shake_256(b"PQ-CBAS-DSH/NONCE"+i.to_bytes(8,"big")).digest(KAPPA) for i in range(10000)})
+    nonce_rnd=len({secrets.token_bytes(KAPPA) for _ in range(10000)})
     out["indicators"]={
         "dsh_overhead_percent": round((dsh-plain)/plain*100,1),
         "domain_tag_collisions": sec["CCSA_with_DSH"],

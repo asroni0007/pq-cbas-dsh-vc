@@ -1,0 +1,49 @@
+{
+ "window_ms": 90,
+ "mode": "digest",
+ "seeds": 5,
+ "alg": "ML-DSA-65",
+ "host": "Apple M2, macOS 26.4.1, Python 3.13.13, liboqs 0.15.0",
+ "summary": [
+  {
+   "scenario": "highway-n20",
+   "seeds": 5,
+   "messages_total": 7930,
+   "e2e_mean_ms": 46.4,
+   "e2e_mean_ci95": 0.53,
+   "proc_mean_ms": 1.04,
+   "deadline_misses": 0,
+   "miss_rate_pct": 0.0
+  },
+  {
+   "scenario": "highway-n20-attack",
+   "seeds": 5,
+   "messages_total": 9325,
+   "e2e_mean_ms": 46.4,
+   "e2e_mean_ci95": 0.65,
+   "proc_mean_ms": 0.99,
+   "deadline_misses": 0,
+   "miss_rate_pct": 0.0
+  },
+  {
+   "scenario": "urban-n30",
+   "seeds": 5,
+   "messages_total": 11050,
+   "e2e_mean_ms": 46.2,
+   "e2e_mean_ci95": 0.32,
+   "proc_mean_ms": 1.26,
+   "deadline_misses": 0,
+   "miss_rate_pct": 0.0
+  },
+  {
+   "scenario": "intersection-n15",
+   "seeds": 5,
+   "messages_total": 7390,
+   "e2e_mean_ms": 47.1,
+   "e2e_mean_ci95": 0.51,
+   "proc_mean_ms": 1.43,
+   "deadline_misses": 0,
+   "miss_rate_pct": 0.0
+  }
+ ]
+}

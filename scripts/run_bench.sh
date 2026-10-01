@@ -7,7 +7,7 @@ SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 ROOT_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 cd "$ROOT_DIR"
 
-OQS_PREFIX="${OQS_PREFIX:-$HOME/oqs-0.15.0}"
+OQS_PREFIX="${OQS_PREFIX:-$HOME/oqs-0.16.0}"
 
 # 1) Build liboqs sekali saja
 if [ ! -d "$OQS_PREFIX/lib" ]; then
@@ -17,7 +17,7 @@ if [ ! -d "$OQS_PREFIX/lib" ]; then
   OQS_SRC="$DEPS_DIR/liboqs"
   mkdir -p "$DEPS_DIR"
   if [ ! -d "$OQS_SRC/.git" ]; then
-    git clone --depth 1 --branch 0.15.0 https://github.com/open-quantum-safe/liboqs.git "$OQS_SRC"
+    git clone --depth 1 --branch 0.16.0 https://github.com/open-quantum-safe/liboqs.git "$OQS_SRC"
   fi
   cmake -S "$OQS_SRC" -B "$OQS_SRC/build" -GNinja \
     -DOQS_MINIMAL_BUILD="SIG_ml_dsa_44;SIG_ml_dsa_65;SIG_ml_dsa_87" \
@@ -40,8 +40,8 @@ OQS_INSTALL_PATH="$OQS_PREFIX" python3 - <<'PY_OQS'
 import oqs
 v = str(oqs.oqs_version())
 print(f"liboqs runtime: {v}")
-if not v.startswith("0.15.0"):
-    raise SystemExit(f"ERROR: expected liboqs 0.15.0, got {v}")
+if not v.startswith("0.16.0"):
+    raise SystemExit(f"ERROR: expected liboqs 0.16.0, got {v}")
 PY_OQS
 
 # 3) Jalankan benchmark (hasil: bench_results.json di folder ini)
