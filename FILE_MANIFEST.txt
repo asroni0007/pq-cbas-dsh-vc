@@ -1,3 +1,4 @@
+.gitignore
 CITATION.cff
 LICENSE
 README.md
@@ -6,11 +7,13 @@ data/StudyAreNetwork.net.xml
 data/environment_records/m2_stack_B/environment.txt
 data/environment_records/m2_stack_B/liboqs_build_config_m2.txt
 data/environment_records/m2_stack_B/pip_freeze.txt
+data/environment_records/pi5/SHA256SUMS.txt
 data/environment_records/pi5/environment.txt
 data/environment_records/pi5/liboqs_build_config_pi5.txt
 data/environment_records/pi5/pip_freeze.txt
 data/esp32_ecdsa_baseline/PQCBAS_ESP32_ECDSA/PQCBAS_ESP32_ECDSA.ino
 data/esp32_ecdsa_baseline/README.md
+data/esp32_ecdsa_baseline/SHA256SUMS.txt
 data/esp32_ecdsa_baseline/captured_sample_summary.json
 data/esp32_ecdsa_baseline/logs/ecdsa_baseline_serial_run1.log
 data/esp32_ecdsa_baseline/logs/ecdsa_baseline_serial_run2.log
@@ -109,6 +112,7 @@ data/final_k384_20260929/mac_sumo/paper_artifacts/table_cross_device.tex
 data/final_k384_20260929/mac_sumo/paper_artifacts/table_esp32_budget.tex
 data/final_k384_20260929/mac_sumo/paper_artifacts/table_esp32_sign_tail.tex
 data/final_k384_20260929/mac_sumo/stack_B/E3_FINAL_SUMMARY.txt
+data/final_k384_20260929/mac_sumo/stack_B/SHA256SUMS.txt
 data/final_k384_20260929/mac_sumo/stack_B/bench_results_k384.json
 data/final_k384_20260929/mac_sumo/stack_B/e2e_fullpath_W90_digest_20seeds.json
 data/final_k384_20260929/mac_sumo/stack_B/e2e_fullpath_W90_full_20seeds.json
@@ -117,6 +121,7 @@ data/final_k384_20260929/mac_sumo/stack_B/logs/01_benchmark_k384.log
 data/final_k384_20260929/mac_sumo/stack_B/logs/02_e3_full_20seeds.log
 data/final_k384_20260929/mac_sumo/stack_B/logs/03_e3_digest_20seeds.log
 data/final_k384_20260929/mac_sumo/stack_B/pip_freeze.txt
+data/final_k384_20260929/mac_sumo/sumo/fullpath/SHA256SUMS.txt
 data/final_k384_20260929/mac_sumo/sumo/fullpath/SUMO_FINAL_SUMMARY.txt
 data/final_k384_20260929/mac_sumo/sumo/fullpath/environment.txt
 data/final_k384_20260929/mac_sumo/sumo/fullpath/logs/00_sanity_digest_50.log
@@ -132,6 +137,7 @@ data/final_k384_20260929/mac_sumo/sumo/fullpath/sumo_pqcbas_bridge_full.py
 data/final_k384_20260929/mac_sumo/sumo/primary_126/Demand.rou.xml
 data/final_k384_20260929/mac_sumo/sumo/primary_126/MOBILITY_RERUN_NOTE.txt
 data/final_k384_20260929/mac_sumo/sumo/primary_126/PublicTransport.xml
+data/final_k384_20260929/mac_sumo/sumo/primary_126/SHA256SUMS.txt
 data/final_k384_20260929/mac_sumo/sumo/primary_126/StudyAreNetwork.net.xml
 data/final_k384_20260929/mac_sumo/sumo/primary_126/bpu_studyarea.add.xml
 data/final_k384_20260929/mac_sumo/sumo/primary_126/compare_fcd_trajectory.py
@@ -151,6 +157,7 @@ data/final_k384_20260929/mac_sumo/sumo/primary_126/trajectory_reproducibility.tx
 data/final_k384_20260929/mac_sumo/sumo/primary_126/validate_fcd.py
 data/final_k384_20260929/mac_sumo/sumo/primary_126/validate_mobility.py
 data/final_k384_20260929/phymac_processed/README_PHYMAC_ARCHIVE.txt
+data/final_k384_20260929/phymac_processed/SHA256SUMS.txt
 data/final_k384_20260929/phymac_processed/macmetrics_confirmatory.pdf
 data/final_k384_20260929/phymac_processed/provenance/StudyAreNetwork.net.xml
 data/final_k384_20260929/phymac_processed/tables/macmetrics_core_results.csv
@@ -158,6 +165,7 @@ data/final_k384_20260929/phymac_processed/tables/macmetrics_manuscript_table.csv
 data/final_k384_20260929/phymac_processed/tables/macmetrics_paired_tests.csv
 data/final_k384_20260929/phymac_processed/tables/macmetrics_summary_ci95.csv
 data/final_k384_20260929/pi5/E3_PI_FINAL_SUMMARY.txt
+data/final_k384_20260929/pi5/SHA256SUMS.txt
 data/final_k384_20260929/pi5/SHA256SUMS_BENCH.txt
 data/final_k384_20260929/pi5/bench_results_k384.json
 data/final_k384_20260929/pi5/e2e_fullpath_W90_digest_20seeds.json
@@ -194,6 +202,7 @@ data/phymac_final_8694_20261001/p0-7_final_analysis/P0-7_PAIRED_SIGN_TEST.csv
 data/phymac_final_8694_20261001/p0-7_final_analysis/P0-7_PAPER_COMPACT_TABLE.csv
 data/phymac_final_8694_20261001/p0-7_final_analysis/analyze_final_120.py
 data/pi5_repeat_20261001/README.txt
+data/pi5_repeat_20261001/SHA256SUMS.txt
 data/pi5_repeat_20261001/console_e3_full_and_digest_20seeds_20261001.txt
 data/pi5_repeat_20261001/original_29sep_copies/e2e_fullpath_W90_digest.json
 data/pi5_repeat_20261001/original_29sep_copies/e2e_fullpath_W90_full.json
@@ -214,6 +223,7 @@ docs/RPI_GUIDE.md
 docs/images/repo_banner.png
 esp32/PQCBAS_ESP32_ECDSA_baseline/PQCBAS_ESP32_ECDSA/PQCBAS_ESP32_ECDSA.ino
 esp32/PQCBAS_ESP32_ECDSA_baseline/README.md
+esp32/PQCBAS_ESP32_ECDSA_baseline/SHA256SUMS.txt
 esp32/PQCBAS_ESP32_ECDSA_baseline/captured_sample_summary.json
 esp32/PQCBAS_ESP32_ECDSA_baseline/logs/ecdsa_baseline_serial_run1.log
 esp32/PQCBAS_ESP32_ECDSA_baseline/logs/ecdsa_baseline_serial_run2.log
