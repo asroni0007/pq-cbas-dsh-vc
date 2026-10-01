@@ -1,0 +1,90 @@
+{
+  "profile": {
+    "algorithm": "ML-DSA-65",
+    "kappa_bits": 384,
+    "kappa_bytes": 48,
+    "full_wire_bytes": 8694,
+    "digest_wire_bytes": 3465
+  },
+  "sources": {
+    "mac": "rerun/final_k384/stack_B/bench_results_k384.json",
+    "pi5": "rerun/final_k384/pi5/bench_results_k384.json",
+    "esp32": "rerun/final_k384/esp32/final/esp32_final_summary.json",
+    "esp32_raw": "rerun/final_k384/esp32/final/esp32_final_success_run.log"
+  },
+  "framework_sign": [
+    {
+      "device": "Mac M2 / Stack B",
+      "implementation": "liboqs 0.16.0",
+      "framework_sign_mean_ms": 0.111038465,
+      "framework_sign_sd_ms": 0.04719755506133356,
+      "p95_ms": "",
+      "p99_ms": "",
+      "max_ms": "",
+      "slowdown_vs_mac": 1.0,
+      "notes": "Framework Sign from final matched Stack B"
+    },
+    {
+      "device": "Raspberry Pi 5",
+      "implementation": "liboqs 0.16.0",
+      "framework_sign_mean_ms": 0.34821626,
+      "framework_sign_sd_ms": 0.16542310837438529,
+      "p95_ms": "",
+      "p99_ms": "",
+      "max_ms": "",
+      "slowdown_vs_mac": 3.1359967016835113,
+      "notes": "Framework Sign from Pi 5 final benchmark"
+    },
+    {
+      "device": "ESP32 240 MHz",
+      "implementation": "PQClean clean 0586a824fc0d49df0b6b6e9179d8d15d06d0974f",
+      "framework_sign_mean_ms": 92.945102,
+      "framework_sign_sd_ms": 57.638476,
+      "p95_ms": 205.9993,
+      "p99_ms": 285.50207,
+      "max_ms": 504.845,
+      "slowdown_vs_mac": 837.0531959353004,
+      "notes": "Length-equivalent framework-sign microbenchmark; n=500"
+    }
+  ],
+  "slowdown": {
+    "pi5_vs_mac": 3.1359967016835113,
+    "esp32_vs_mac": 837.0531959353004,
+    "esp32_vs_pi5": 266.917753926827
+  },
+  "esp32_core_sign": {
+    "mean_ms": 87.970336,
+    "sd_ms": 53.723845,
+    "p95_ms": 184.58265,
+    "p99_ms": 281.40308,
+    "max_ms": 397.491
+  },
+  "esp32_framework_sign": {
+    "mean_ms": 92.945102,
+    "sd_ms": 57.638476,
+    "p95_ms": 205.9993,
+    "p99_ms": 285.50207,
+    "max_ms": 504.845
+  },
+  "esp32_deadline": {
+    "5_msg_s": {
+      "deadline_ms": 200.0,
+      "misses": 27,
+      "n": 500,
+      "miss_rate_pct": 5.4
+    },
+    "10_msg_s": {
+      "deadline_ms": 100.0,
+      "misses": 160,
+      "n": 500,
+      "miss_rate_pct": 32.0
+    },
+    "20_msg_s": {
+      "deadline_ms": 50.0,
+      "misses": 404,
+      "n": 500,
+      "miss_rate_pct": 80.8
+    }
+  },
+  "methodology_note": "Cross-device numbers are measured stack costs, not pure CPU-normalized comparisons. Mac/Pi use liboqs; ESP32 uses pinned PQClean clean implementation. ESP32 framework-sign is a length-equivalent signing-transcript microbenchmark. No Fiat-Shamir rejection-loop counts were directly instrumented."
+}

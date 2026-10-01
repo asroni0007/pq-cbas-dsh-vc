@@ -1,0 +1,21 @@
+
+=== SUMO 1.26 PRIMARY MOBILITY ===
+FCD                  : studyarea_fcd_final_126.xml
+RSU                  : (80.0, 36.0)
+Radius               : 150 m
+Simulation duration  : 3600.0 s
+Simulation step      : 1.0 s
+All unique vehicles  : 4402
+Traffic throughput   : 4402.0 veh/h
+RSU entry events     : 2680
+RSU unique vehicles  : 2680
+Mean concurrent RSU  : 42.17
+Contact mean         : 56.65 s
+Contact p5           : 13.00 s
+Contact p50          : 48.00 s
+Contact p95          : 167.15 s
+Contact min          : 1.00 s
+Contact max          : 328.00 s
+===================================
+
+Saved: ../rerun/final_k384/sumo/primary_126/mobility_validation.json

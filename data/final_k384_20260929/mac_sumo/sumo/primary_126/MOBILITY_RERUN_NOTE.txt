@@ -1,0 +1,48 @@
+SUMO 1.26.0 controlled mobility rerun
+======================================
+
+Simulation:
+- SUMO 1.26.0
+- Duration: 3600 s
+- Step: 1 s
+- RSU: (80,36)
+- Radius: 150 m
+
+Controlled rerun:
+- Realized vehicles: 4402
+- RSU entries / unique vehicles: 2680
+- Mean concurrent RSU: 42.17
+- p95 concurrent RSU: 63
+- Contact mean: 56.65 s
+- Contact p5: 13 s
+- Contact p50: 48 s
+- Contact p95: 167.15 s
+
+A second SUMO execution was performed to test reproducibility.
+Raw FCD file SHA-256 values can differ because run/output metadata
+may differ. Reproducibility is therefore evaluated from canonicalized
+timestep and vehicle trajectory content rather than raw XML bytes.
+
+Historical artifact values:
+- 4943 vehicles/hour
+- 3193 vehicles in RSU
+- mean contact 68.4 s
+- p95 contact 193 s
+
+The original studyarea_fcd.xml supporting those historical values is
+not present in the available artifact. Therefore the historical
+mobility statistics are retained only as archived results, while the
+controlled rerun values above are used for the revised evaluation.
+
+Reproducibility decision
+------------------------
+The primary no-explicit-seed trace was reproduced in a second SUMO 1.26.0 run.
+After canonicalization of timestep and vehicle trajectory contents, both runs
+produced the same trajectory SHA-256, 3600 timesteps, 445778 vehicle
+observations, and 4402 unique vehicles.
+
+A separate two-run --seed 42 sanity check was also performed. It is retained
+only as a reproducibility control and is not used as the final mobility trace.
+
+The final evaluation trace is:
+studyarea_fcd_final_126.xml

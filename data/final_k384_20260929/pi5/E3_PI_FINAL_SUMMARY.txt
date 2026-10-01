@@ -1,0 +1,100 @@
+========================================================================================
+FULL
+========================================================================================
+highway-n20
+  messages     : 31720
+  accepted     : 31720
+  rejected     : 0
+  proc mean    : 7.1289 ms
+  latency mean : 52.527 ± 0.327 ms
+  p95          : 93.1516 ms
+  p99          : 97.1305 ms
+  max          : 104.829 ms
+  misses       : 26
+
+highway-n20-attack
+  messages     : 37300
+  accepted     : 33300
+  rejected     : 4000
+  proc mean    : 6.4302 ms
+  latency mean : 52.04 ± 0.296 ms
+  p95          : 92.4646 ms
+  p99          : 96.3693 ms
+  max          : 102.657 ms
+  misses       : 11
+
+urban-n30
+  messages     : 44200
+  accepted     : 44200
+  rejected     : 0
+  proc mean    : 8.6859 ms
+  latency mean : 54.178 ± 0.236 ms
+  p95          : 94.7113 ms
+  p99          : 98.8247 ms
+  max          : 105.268 ms
+  misses       : 216
+
+intersection-n15
+  messages     : 29560
+  accepted     : 29560
+  rejected     : 0
+  proc mean    : 9.8719 ms
+  latency mean : 55.413 ± 0.329 ms
+  p95          : 95.8414 ms
+  p99          : 100.1899 ms
+  max          : 106.418 ms
+  misses       : 334
+
+TOTAL messages : 142780
+TOTAL misses   : 587
+
+========================================================================================
+DIGEST
+========================================================================================
+highway-n20
+  messages     : 31720
+  accepted     : 31720
+  rejected     : 0
+  proc mean    : 5.1196 ms
+  latency mean : 50.397 ± 0.329 ms
+  p95          : 90.9976 ms
+  p99          : 94.6958 ms
+  max          : 100.347 ms
+  misses       : 1
+
+highway-n20-attack
+  messages     : 37300
+  accepted     : 33300
+  rejected     : 4000
+  proc mean    : 4.6723 ms
+  latency mean : 50.166 ± 0.293 ms
+  p95          : 90.5894 ms
+  p99          : 94.1927 ms
+  max          : 99.079 ms
+  misses       : 0
+
+urban-n30
+  messages     : 44200
+  accepted     : 44200
+  rejected     : 0
+  proc mean    : 6.232 ms
+  latency mean : 51.601 ± 0.233 ms
+  p95          : 92.1303 ms
+  p99          : 95.9463 ms
+  max          : 100.796 ms
+  misses       : 4
+
+intersection-n15
+  messages     : 29560
+  accepted     : 29560
+  rejected     : 0
+  proc mean    : 7.0687 ms
+  latency mean : 52.479 ± 0.328 ms
+  p95          : 92.8688 ms
+  p99          : 96.8266 ms
+  max          : 101.739 ms
+  misses       : 17
+
+TOTAL messages : 142780
+TOTAL misses   : 22
+

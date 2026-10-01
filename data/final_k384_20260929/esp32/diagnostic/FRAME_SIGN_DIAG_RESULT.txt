@@ -1,0 +1,22 @@
+ESP32 framework-sign diagnostic result
+
+Result:
+FRAME_DIAG2_500_OK
+
+Observed at final iterations:
+END,495,... heap=211384 hwm=18332
+BEGIN,496,... heap=211384 hwm=18332
+END,496,... heap=211384 hwm=18332
+BEGIN,497,... heap=211384 hwm=18332
+END,497,... heap=211384 hwm=18332
+BEGIN,498,... heap=211384 hwm=18332
+END,498,... heap=211384 hwm=18332
+BEGIN,499,... heap=211384 hwm=18332
+END,499,80.640,heap=211384,hwm=18332
+FRAME_DIAG2_500_OK
+
+Interpretation:
+500 framework-sign operations completed successfully.
+No progressive heap or stack depletion was observed at the final checkpoints.
+Earlier incomplete runs therefore must not be interpreted as evidence
+that ML-DSA framework signing itself consistently fails near iteration 200.

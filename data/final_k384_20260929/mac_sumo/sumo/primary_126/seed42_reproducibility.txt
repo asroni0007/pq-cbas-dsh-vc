@@ -1,0 +1,14 @@
+
+studyarea_fcd_seed42_A.xml
+  trajectory SHA256 : c265f21721d5424717806fb8d896f9cfadf9bfdafb7431271b82c9f5f06b4357
+  timesteps         : 3600
+  observations      : 484428
+  unique vehicles   : 4361
+
+studyarea_fcd_seed42_B.xml
+  trajectory SHA256 : c265f21721d5424717806fb8d896f9cfadf9bfdafb7431271b82c9f5f06b4357
+  timesteps         : 3600
+  observations      : 484428
+  unique vehicles   : 4361
+
+SEED42_TRAJECTORY_REPRODUCIBLE_OK

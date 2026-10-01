@@ -1,0 +1,14 @@
+
+studyarea_fcd_final_126.xml
+  trajectory SHA256 : a34ccceb771ca05e8df39c1ab91fc60ddd6fdeae7f2624fc8d3cbef12ba55742
+  timesteps         : 3600
+  observations      : 445778
+  unique vehicles   : 4402
+
+studyarea_fcd_repro_126.xml
+  trajectory SHA256 : a34ccceb771ca05e8df39c1ab91fc60ddd6fdeae7f2624fc8d3cbef12ba55742
+  timesteps         : 3600
+  observations      : 445778
+  unique vehicles   : 4402
+
+SUMO_TRAJECTORY_REPRODUCIBLE_OK

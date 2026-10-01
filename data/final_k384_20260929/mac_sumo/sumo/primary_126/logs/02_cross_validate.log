@@ -1,0 +1,12 @@
+SUMO FCD: 3600 steps
+
+(1) batch size k in RSU coverage
+RSU center=(80.0,36.0), R=150 m
+mean=42.6 p95=64
+
+(2) trajectory-aware linking advantage
+W= 5s acc=0.477 adv=0.465 avg_k=41.5
+W=10s acc=0.283 adv=0.265 avg_k=40.5
+W=20s acc=0.171 adv=0.149 avg_k=38.8
+W=40s acc=0.115 adv=0.089 avg_k=34.5
+W=60s acc=0.110 adv=0.077 avg_k=27.5

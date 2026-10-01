@@ -1,0 +1,8 @@
+esp32/PQCBAS_ESP32_Bench/setup_arduino.sh:17:git clone --depth 1 https://github.com/PQClean/PQClean.git "$TMP/PQClean" 2>&1 | tail -2
+esp32/PQCBAS_ESP32_Bench/patch_n500.sh:13:#   histogram jumlah iterasi Fiat-Shamir
+esp32/PQCBAS_ESP32_Bench/patch_n500.sh:82:tail = r"""  /* ---------- F. Analisis ekor tanda tangan (E4) ---------- */
+esp32/PQCBAS_ESP32_Bench/patch_n500.sh:107:  Serial.println("\n--- H. Histogram iterasi Fiat-Shamir ---");
+esp32/PQCBAS_ESP32_Bench/patch_n500.sh:108:  float unit = srt[0];                      /* 1 iterasi = waktu minimum */
+esp32/PQCBAS_ESP32_Bench/patch_n500.sh:115:  Serial.printf("  1 iterasi = %.2f ms\n", unit);
+esp32/PQCBAS_ESP32_Bench/patch_n500.sh:123:s = s.replace(old_mem, tail + old_mem)
+esp32/PQCBAS_ESP32_Bench/patch_n500.sh:142:grep -n "N_SIGN      500\|sign_samples\|sign_p50\|Histogram" "$F" | head -6

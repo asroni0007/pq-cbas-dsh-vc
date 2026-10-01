@@ -1,0 +1,30 @@
+{
+  "fcd": "studyarea_fcd_final_126.xml",
+  "sumo_version": "1.26.0",
+  "rsu": {
+    "x": 80.0,
+    "y": 36.0,
+    "radius_m": 150.0
+  },
+  "simulation": {
+    "duration_s": 3600.0,
+    "step_s": 1.0
+  },
+  "traffic": {
+    "all_unique_vehicles": 4402,
+    "throughput_veh_h": 4402.0
+  },
+  "coverage": {
+    "entry_events": 2680,
+    "unique_vehicles": 2680,
+    "mean_concurrent": 42.17388888888889,
+    "p95_concurrent": 63.0,
+    "contact_count": 2680,
+    "contact_mean_s": 56.65149253731343,
+    "contact_p5_s": 13.0,
+    "contact_p50_s": 48.0,
+    "contact_p95_s": 167.15000000000055,
+    "contact_min_s": 1.0,
+    "contact_max_s": 328.0
+  }
+}

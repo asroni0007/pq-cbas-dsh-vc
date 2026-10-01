@@ -1,0 +1,42 @@
+liboqs-python faulthandler is disabled
+=== FINAL SUMO FULL-PATH BRIDGE ===
+Python             : 3.13.15
+liboqs-python     : 0.16.0.1
+liboqs            : 0.16.0
+Algorithm         : ML-DSA-65
+KAPPA             : 48 bytes
+process_window_full: (tuples, pk_CA, verifier)
+process_window_digest: (records, pk_CA, verifier)
+FCD entry events   : 50
+FCD unique RSU veh : 50
+Creating crypto identities: 50
+  identities 50/50
+[seed 01/01] rng=7
+  messages=50 accepted=50 rejected=0 proc=0.256917ms latency=45.017595ms p99=89.485389 max=90.13985 miss=0
+
+=== SUMMARY ===
+{
+  "seeds": 1,
+  "messages_total": 50,
+  "accepted_total": 50,
+  "rejected_total": 0,
+  "windows_total": 38,
+  "batch_mean": 1.3158,
+  "batch_p95_seed_mean": 2.15,
+  "batch_max": 3,
+  "latency_mean_ms": 45.017595,
+  "latency_mean_ci95_ms": 0.0,
+  "latency_p95_seed_mean_ms": 86.76084,
+  "latency_p99_seed_mean_ms": 89.485389,
+  "latency_max_ms": 90.13985,
+  "proc_total_mean_ms": 0.256917,
+  "proc_total_p95_seed_mean_ms": 0.510436,
+  "proc_total_max_ms": 1.306125,
+  "proc_precheck_mean_ms": 0.067759,
+  "proc_aggregate_mean_ms": 0.066417,
+  "proc_aggverify_mean_ms": 0.122084,
+  "deadline_misses": 0,
+  "miss_rate_pct": 0.0
+}
+
+Saved: rerun/final_k384/sumo/fullpath/sanity_full_50.json

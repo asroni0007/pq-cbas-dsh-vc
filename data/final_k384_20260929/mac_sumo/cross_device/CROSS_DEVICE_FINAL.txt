@@ -1,0 +1,36 @@
+PQ-CBAS-DSH — CROSS-DEVICE FINAL ANALYSIS
+===========================================
+
+Algorithm      : ML-DSA-65
+Security       : kappa=384 bit / 48 B
+FULL wire      : 8694 B
+DIGEST wire    : 3465 B
+
+Framework-sign mean ± SD
+------------------------
+Mac M2 Stack B : 0.111038 ± 0.047198 ms
+Raspberry Pi 5 : 0.348216 ± 0.165423 ms
+ESP32          : 92.945102 ± 57.638476 ms
+
+Measured slowdown
+-----------------
+Pi5 / Mac      : 3.136x
+ESP32 / Mac    : 837.053x
+ESP32 / Pi5    : 266.918x
+
+ESP32 framework-sign tails
+--------------------------
+p95             : 205.999300 ms
+p99             : 285.502070 ms
+max             : 504.845000 ms
+
+ESP32 deadline analysis
+-----------------------
+5_msg_s   : 27/500 (5.40%) > 200 ms
+10_msg_s  : 160/500 (32.00%) > 100 ms
+20_msg_s  : 404/500 (80.80%) > 50 ms
+
+Methodological caution
+----------------------
+Mac/Pi and ESP32 use different software stacks; ratios therefore represent measured cross-device deployment costs rather than pure CPU speed ratios.
+ESP32 timing tails are retained as measured and are not causally attributed to Fiat-Shamir rejection sampling because rejection-loop counts were not directly instrumented.

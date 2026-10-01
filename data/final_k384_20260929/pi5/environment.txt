@@ -1,0 +1,45 @@
+=== DATE ===
+Tue Sep 29 03:52:22 PM WIB 2026
+
+=== HOST ===
+pi13
+
+=== OS ===
+PRETTY_NAME="Debian GNU/Linux 12 (bookworm)"
+NAME="Debian GNU/Linux"
+VERSION_ID="12"
+VERSION="12 (bookworm)"
+VERSION_CODENAME=bookworm
+ID=debian
+HOME_URL="https://www.debian.org/"
+SUPPORT_URL="https://www.debian.org/support"
+BUG_REPORT_URL="https://bugs.debian.org/"
+
+=== KERNEL ===
+Linux pi13 6.6.51+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.6.51-1+rpt3 (2024-10-08) aarch64 GNU/Linux
+
+=== CPU ===
+Architecture:                         aarch64
+CPU(s):                               4
+On-line CPU(s) list:                  0-3
+Model name:                           Cortex-A76
+CPU(s) scaling MHz:                   100%
+CPU max MHz:                          2400.0000
+CPU min MHz:                          1500.0000
+
+=== GOVERNOR ===
+/sys/devices/system/cpu/cpu0/cpufreq/scaling_governor: performance
+/sys/devices/system/cpu/cpu1/cpufreq/scaling_governor: performance
+/sys/devices/system/cpu/cpu2/cpufreq/scaling_governor: performance
+/sys/devices/system/cpu/cpu3/cpufreq/scaling_governor: performance
+
+=== PYTHON/OQS ===
+liboqs-python faulthandler is disabled
+Python         : 3.11.2
+Machine        : aarch64
+liboqs-python : 0.16.0.1
+liboqs        : 0.16.0
+Algorithm      : ML-DSA-65
+KAPPA          : 384 bit / 48 B
+Full wire      : 8694 B
+Digest wire    : 3465 B

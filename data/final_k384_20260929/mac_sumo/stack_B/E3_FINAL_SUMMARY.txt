@@ -1,0 +1,102 @@
+===============================================================================================
+FULL
+===============================================================================================
+highway-n20
+  t avg        : 16.2
+  messages     : 31720
+  attacks      : 0
+  accepted     : 31720
+  rejected     : 0
+  proc mean    : 2.7145 ms
+  latency mean : 47.849 ± 0.322 ms
+  latency p99  : 91.9521 ms
+  latency max  : 94.783 ms
+  misses       : 0
+
+highway-n20-attack
+  t avg        : 16.1
+  messages     : 37300
+  attacks      : 4000
+  accepted     : 33300
+  rejected     : 4000
+  proc mean    : 2.4779 ms
+  latency mean : 47.829 ± 0.298 ms
+  latency p99  : 91.7119 ms
+  latency max  : 96.277 ms
+  misses       : 0
+
+urban-n30
+  t avg        : 19.7
+  messages     : 44200
+  attacks      : 0
+  accepted     : 44200
+  rejected     : 0
+  proc mean    : 3.2915 ms
+  latency mean : 48.515 ± 0.265 ms
+  latency p99  : 92.5879 ms
+  latency max  : 135.193 ms
+  misses       : 14
+
+intersection-n15
+  t avg        : 22.4
+  messages     : 29560
+  attacks      : 0
+  accepted     : 29560
+  rejected     : 0
+  proc mean    : 3.6131 ms
+  latency mean : 48.863 ± 0.327 ms
+  latency p99  : 92.8482 ms
+  latency max  : 95.863 ms
+  misses       : 0
+
+===============================================================================================
+DIGEST
+===============================================================================================
+highway-n20
+  t avg        : 16.2
+  messages     : 31720
+  attacks      : 0
+  accepted     : 31720
+  rejected     : 0
+  proc mean    : 1.8819 ms
+  latency mean : 46.968 ± 0.339 ms
+  latency p99  : 91.0369 ms
+  latency max  : 93.869 ms
+  misses       : 0
+
+highway-n20-attack
+  t avg        : 16.1
+  messages     : 37300
+  attacks      : 4000
+  accepted     : 33300
+  rejected     : 4000
+  proc mean    : 1.7129 ms
+  latency mean : 47.015 ± 0.288 ms
+  latency p99  : 90.8894 ms
+  latency max  : 92.997 ms
+  misses       : 0
+
+urban-n30
+  t avg        : 19.7
+  messages     : 44200
+  attacks      : 0
+  accepted     : 44200
+  rejected     : 0
+  proc mean    : 2.2427 ms
+  latency mean : 47.413 ± 0.241 ms
+  latency p99  : 91.4279 ms
+  latency max  : 93.935 ms
+  misses       : 0
+
+intersection-n15
+  t avg        : 22.4
+  messages     : 29560
+  attacks      : 0
+  accepted     : 29560
+  rejected     : 0
+  proc mean    : 2.553 ms
+  latency mean : 47.753 ± 0.327 ms
+  latency p99  : 91.7295 ms
+  latency max  : 95.931 ms
+  misses       : 0
+

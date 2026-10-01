@@ -1,0 +1,49 @@
+66:static void st_add(stat_t *s, double v) {
+78:  Serial.printf("  %-12s n=%3d  mean=%9.3f ms  sd=%8.3f  min=%9.3f  max=%9.3f\n",
+101:  Serial.println("\n========================================================");
+102:  Serial.println(" PQ-CBAS-DSH benchmark - ESP32 (kelas OBU)");
+103:  Serial.println("========================================================");
+104:  Serial.printf("  pk=%d B  sk=%d B  sig=%d B  msg=%d B\n\n",
+107:  for (int i = 0; i < MSG_LEN; i++) msg[i] = (uint8_t)(i & 0xFF);
+110:  Serial.printf("[1/5] keypair (n=%d)...\n", N_KEYPAIR);
+111:  for (int i = 0; i < N_KEYPAIR; i++) {
+114:    st_add(&s_kp, now_ms() - t0);
+119:  Serial.printf("[2/5] domain-separated hashing (n=%d)...\n", N_DSH);
+120:  for (int i = 0; i < N_DSH; i++) {
+124:    st_add(&s_dsh, now_ms() - t0);
+128:  Serial.printf("[3/5] sign (n=%d)...\n", N_SIGN);
+129:  for (int i = 0; i < N_SIGN; i++) {
+133:    st_add(&s_sg, now_ms() - t0);
+138:  Serial.printf("[4/5] verify (n=%d)...\n", N_VERIFY);
+139:  for (int i = 0; i < N_VERIFY; i++) {
+142:    st_add(&s_vf, now_ms() - t0);
+143:    if (rc != 0) { Serial.printf("  !! VERIFY GAGAL (i=%d)\n", i); break; }
+148:  Serial.println("[5/5] batch verify m=1,2,5,10...");
+149:  Serial.printf("      menyiapkan %d penandatangan berbeda...\n", MAX_BATCH);
+150:  for (int i = 0; i < MAX_BATCH; i++) {
+163:      for (int i = 0; i < m; i++) {
+165:          Serial.printf("  !! batch verify gagal (m=%d,i=%d)\n", m, i);
+167:      st_add(&s_batch[m], now_ms() - t0);
+173:  Serial.println("\n--- A. Operasi inti ---");
+181:  Serial.println("\n--- B. Kelayakan OBU (sign vs anggaran BSM) ---");
+183:  for (int i = 0; i < 3; i++) {
+185:    Serial.printf("  %2d msg/s : anggaran %6.1f ms | sign %7.2f ms = %5.1f%% | %s\n",
+190:  Serial.println("\n--- C. Verifikasi batch sisi-RSU (terukur) ---");
+191:  Serial.printf("  %3s %12s %12s %12s\n", "m", "batch (ms)", "per-tuple", "W+proc");
+195:    Serial.printf("  %3d %12.2f %12.3f %12.1f  %s\n",
+200:  Serial.println("\n--- D. Proyeksi ke beban skenario naskah ---");
+203:  for (int i = 0; i < 3; i++) {
+205:    Serial.printf("  t=%2d : proc %8.1f ms | W+proc %8.1f ms | %s\n",
+209:  Serial.printf("  (per-tuple %.3f ms dari batch m=10 terukur)\n", per_tuple);
+211:  Serial.println("\n--- E. Memori ---");
+212:  Serial.printf("  heap bebas   : %u B\n", (unsigned)ESP.getFreeHeap());
+213:  Serial.printf("  heap minimum : %u B\n", (unsigned)ESP.getMinFreeHeap());
+214:  Serial.printf("  stack sisa   : %u B dari %d B\n",
+218:  Serial.println("\n--- F. JSON (salin baris di bawah) ---");
+219:  Serial.printf("{\"platform\":\"esp32\",\"cpu_mhz\":%d,"
+227:  Serial.print("\"batch\":{");
+229:    Serial.printf("\"%d\":%.4f%s", sizes[si], st_mean(&s_batch[sizes[si]]),
+231:  Serial.printf("},\"heap_free\":%u,\"pk\":%d,\"sk\":%d,\"sig\":%d}\n",
+234:  Serial.println("\n=== Selesai ===");
+244:  Serial.printf("\n[PLATFORM] ESP32 | %d MHz | %d core | SDK %s\n",
+246:  Serial.printf("[PLATFORM] flash %u B | heap awal %u B\n",

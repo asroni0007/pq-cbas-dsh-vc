@@ -1,0 +1,22 @@
+Sketch uses 269516 bytes (20%) of program storage space. Maximum is 1310720 bytes.
+Global variables use 22116 bytes (6%) of dynamic memory, leaving 305564 bytes for local variables. Maximum is 327680 bytes.
+esptool v5.3.1
+Serial port /dev/cu.usbserial-0001:
+Connecting....
+[1A[2K[1A[2KConnected to ESP32 on /dev/cu.usbserial-0001:
+Chip type:          ESP32-D0WD-V3 (revision v3.1)
+Features:           Wi-Fi, BT, Dual Core + LP Core, 240MHz, Vref calibration in eFuse, Coding Scheme None
+Crystal frequency:  40MHz
+MAC:                e0:8c:fe:5e:17:e8
+
+Uploading stub flasher...
+Running stub flasher...
+[1A[2K[1A[2K[1;31m
+A fatal error occurred: Unable to verify flash chip connection (Invalid head of packet (0xFF): Possible serial noise or corruption.).[0m
+Stub flasher running.
+Changing baud rate to 921600...
+Changed.
+
+
+Hard resetting via RTS pin...
+Error during Upload: Failed uploading: uploading error: exit status 2

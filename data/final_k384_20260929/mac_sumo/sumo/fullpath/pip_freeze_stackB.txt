@@ -1,0 +1,8 @@
+cffi==2.1.1
+cryptography==50.0.1
+liboqs-python==0.16.0.1
+numpy==2.5.3
+packaging==26.3
+pycparser==3.0
+setuptools==84.0.0
+wheel==0.48.0

@@ -1,0 +1,4 @@
+device,implementation,framework_sign_mean_ms,framework_sign_sd_ms,p95_ms,p99_ms,max_ms,slowdown_vs_mac,notes
+Mac M2 / Stack B,liboqs 0.16.0,0.111038465,0.04719755506133356,,,,1.0,Framework Sign from final matched Stack B
+Raspberry Pi 5,liboqs 0.16.0,0.34821626,0.16542310837438529,,,,3.1359967016835113,Framework Sign from Pi 5 final benchmark
+ESP32 240 MHz,PQClean clean 0586a824fc0d49df0b6b6e9179d8d15d06d0974f,92.945102,57.638476,205.9993,285.50207,504.845,837.0531959353004,Length-equivalent framework-sign microbenchmark; n=500
