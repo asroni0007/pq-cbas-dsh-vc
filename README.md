@@ -1,11 +1,11 @@
-# PQ-CBAS-DSH — Research Artifact (v1.3.0, final κ = 384 profile)
+# PQ-CBAS-DSH — Research Artifact (v1.3.1, final κ = 384 profile)
 
 Reproducible measurement artifact for:
 
 > **What Post-Quantum Authentication Costs in a VANET: Measuring ML-DSA-65 Across Device Classes in a Certificate-Based Batched-Verification Framework**
 > Asroni, Selo Sulistyo, Sigit B. Wibowo — submitted to *Vehicular Communications*.
 
-DOI: add the version DOI that Zenodo issues for release `v1.3.0` (the earlier DOI 10.5281/zenodo.21805963 archives v1.2.0, see "Versions").
+DOI (all versions, always resolves to the latest archived version): https://doi.org/10.5281/zenodo.21805962
 
 ## What is where
 
@@ -38,8 +38,9 @@ sha256sum -c SHA256SUMS.txt
 
 ## Versions
 
-- v1.3.0 (1 Oct 2026): final κ = 384 data, Pi 5 repeat, build configurations, final PHY/MAC matrix, ESP32 ECDSA baseline.
-- v1.2.0 (28 Sep 2026, DOI 10.5281/zenodo.21805963): earlier liboqs 0.15.0 results; superseded.
+- v1.3.1 (2 Oct 2026): complete release: final κ = 384 data, Pi 5 repeat, build configurations, final PHY/MAC matrix, ESP32 ECDSA baseline.
+- v1.3.0 (DOI 10.5281/zenodo.23085005): archive was created from an earlier commit and is incomplete; superseded by v1.3.1.
+- v1.0.0 (DOI 10.5281/zenodo.21805963) and v1.2.0: earlier liboqs 0.15.0 results; superseded.
 
 ## License
 
