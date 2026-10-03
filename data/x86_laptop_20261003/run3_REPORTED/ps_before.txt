@@ -1,0 +1,15 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+USER       25515 13.6  3.3 4648872 265224 ?      Ssl  07:51   3:00 /usr/bin/gnome-shell
+USER       25349  7.9  1.2 1164772 102956 tty2   Sl+  07:51   1:45 /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xauthority -nolisten tcp -background none -noreset -keeptty -novtswitch -verbose 3
+root       25317  0.5  0.0      0     0 ?        I    07:50   0:07 [kworker/0:0-events]
+root       12974  0.2  0.0      0     0 ?        I    07:05   0:09 [kworker/0:1-i915-unordered]
+root       28157  0.2  0.0      0     0 ?        I<   07:59   0:01 [kworker/u9:3-hci0]
+root       24035  0.1  0.0      0     0 ?        I<   07:33   0:03 [kworker/u9:2-i915_flip]
+root       25889  0.1  0.0      0     0 ?        I<   07:51   0:02 [kworker/u9:1-hci0]
+USER       25890  0.1  0.7 2917100 60068 ?       Sl   07:51   0:01 gjs /usr/share/gnome-shell/extensions/ding@rastersoft.com/ding.js -E -P /usr/share/gnome-shell/extensions/ding@rastersoft.com -M 0 -D 0:0:1920:1080:1:27:0:70:0:0
+root       28967  0.1  0.0      0     0 ?        I    08:09   0:00 [kworker/1:0-mm_percpu_wq]
+USER       29573  0.1  0.1 462956 12504 ?        Sl   08:12   0:00 /usr/bin/ibus-daemon --panel disable --xim
+USER       29583  0.1  0.3 194000 25036 ?        Sl   08:12   0:00 /usr/libexec/ibus-x11 --kill-daemon
+root           1  0.0  0.1 168388 13908 ?        Ss   Sep29   0:07 /sbin/init splash
+root           2  0.0  0.0      0     0 ?        S    Sep29   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        S    Sep29   0:00 [pool_workqueue_release]

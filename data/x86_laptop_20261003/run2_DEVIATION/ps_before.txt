@@ -1,0 +1,15 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+USER       25515 13.8  3.3 4653144 265052 ?      Ssl  07:51   2:34 /usr/bin/gnome-shell
+USER       25349  8.2  1.2 1161472 103976 tty2   Sl+  07:51   1:32 /usr/lib/xorg/Xorg vt2 -displayfd 3 -auth /run/user/1000/gdm/Xauthority -nolisten tcp -background none -noreset -keeptty -novtswitch -verbose 3
+USER       27279  4.7  1.8 1811080 148380 ?      Sl   07:54   0:43 gnome-control-center bluetooth
+root       25317  0.5  0.0      0     0 ?        I    07:50   0:06 [kworker/0:0-i915-unordered]
+USER       25722  0.5  1.9 928992 154572 ?       Sl   07:51   0:05 /snap/snap-store/1216/usr/bin/snap-store --gapplication-service
+USER       29054  0.3  0.1 463080 12500 ?        Sl   08:09   0:00 /usr/bin/ibus-daemon --panel disable --xim
+USER       29064  0.3  0.3 194004 24888 ?        Sl   08:09   0:00 /usr/libexec/ibus-x11 --kill-daemon
+root       12974  0.2  0.0      0     0 ?        I    07:05   0:09 [kworker/0:1-i915-unordered]
+root       28157  0.2  0.0      0     0 ?        I<   07:59   0:01 [kworker/u9:3-hci0]
+root       24035  0.1  0.0      0     0 ?        I<   07:33   0:03 [kworker/u9:2-hci0]
+root       25889  0.1  0.0      0     0 ?        I<   07:51   0:01 [kworker/u9:1-i915_flip]
+USER       25890  0.1  0.7 2917100 60036 ?       Sl   07:51   0:01 gjs /usr/share/gnome-shell/extensions/ding@rastersoft.com/ding.js -E -P /usr/share/gnome-shell/extensions/ding@rastersoft.com -M 0 -D 0:0:1920:1080:1:27:0:70:0:0
+root           1  0.0  0.1 168388 13908 ?        Ss   Sep29   0:07 /sbin/init splash
+root           2  0.0  0.0      0     0 ?        S    Sep29   0:00 [kthreadd]

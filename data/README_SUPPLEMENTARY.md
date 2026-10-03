@@ -13,7 +13,10 @@ study. NOTE: `tables/` and `final_k384_20260929/phymac_processed/` still hold th
 - `final_k384_20260929/pi5/` — Raspberry Pi 5 benchmark, E2E full path (20 seeds, both modes),
   environment and pip freeze (liboqs 0.16.0, Python 3.11.2, governor `performance`; thermal state
   was not recorded).
-- `final_k384_20260929/esp32/` — firmware sources (PQClean commit 0586a824…), serial logs
+- `pi5_unit2_20261003/` — run of a **second Raspberry Pi 5** (same model and board revision, different serial) with the byte-identical liboqs file and package pins: micro-benchmark, end-to-end full/digest (20 seeds), 5-s thermal log; agrees with unit 1 within 0.5% (see its `README.txt`; supplementary, not pooled).
+- `x86_laptop_20261003/` — **x86-64 laptop cross-check** (Core i7-6500U, Ubuntu 22.04.5): three runs (`run1_DEVIATION`, `run2_DEVIATION`, `run3_REPORTED`), environment records, thermal/frequency/AC logs; run 3 is the reported run, runs 1 and 2 overlapped with commands issued on the machine and are kept with all values. Miss counts vary 230-1,308 (full mode) between runs; see its `README.txt`. Run-time path probe: `environment_records/runtime_path_probe/x86_probe_output_excerpt.txt`.
+- `esp32_two_unit_20261003/` — **current ESP32 data**: 12 validated raw serial logs (ML-DSA-65, mbedTLS ECDSA-P256, micro-ecc ECDSA-P256; two units, two runs each) with MAC records, firmware binaries and hashes, sketches, recorder scripts, the analysis script that regenerates `tab:esp32` and `fig:esp32budget`, and the statistics (`analysis/stats_final.{json,txt}`). It supersedes the single-unit ESP32 data below; see its `README.md`.
+- `final_k384_20260929/esp32/` — (superseded by the folder above, kept unmodified) firmware sources (PQClean commit 0586a824…), serial logs
   (`final/esp32_final_success_run.log` with RAW_SIGN, RAW_FRAME_SIGN, RAW_VERIFY samples; the log
   holds 498 of the 500 verification samples, the on-device summary covers 500), audit and
   diagnostic files. Build artifacts and logs over 2 MB are omitted.
@@ -29,8 +32,7 @@ study. NOTE: `tables/` and `final_k384_20260929/phymac_processed/` still hold th
 - `StudyAreNetwork.net.xml`, `macmetrics_confirmatory.pdf` — SUMO network and Figure 7 source.
 
 ## Table → source map
-Operation and aggregation tables: `bench_results_k384.json` (M2, Pi 5). ESP32 table: serial log,
-statistics recomputed from raw samples (bootstrap 20,000 resamples, seed 20260930; Wilson CIs).
+Operation and aggregation tables: `bench_results_k384.json` (M2, Pi 5). ESP32 table and budget figure: `esp32_two_unit_20261003/` (12 raw logs; `analysis/analyze_esp32.py` recomputes every value from the raw samples; bootstrap 20,000 resamples, seed 20261003; Wilson CIs). The single-unit serial log of 29 September is superseded and not used for any ESP32 number in the paper.
 E2E tables: `e2e_fullpath_W90_{full,digest}_20seeds.json` (M2, Pi 5). SUMO table: `sumo/fullpath`.
 Transport table: Little's law N = 42.1739 from `primary_126/mobility_validation.json`.
 

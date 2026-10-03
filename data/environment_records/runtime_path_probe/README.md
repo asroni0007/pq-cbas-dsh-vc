@@ -1,0 +1,16 @@
+# Run-time code-path probe (ML-DSA-65, liboqs 0.16.0)
+
+Purpose: identify which ML-DSA-65 implementation executes at run time in the same Python environments that produced the benchmark (reference C vs mldsa-native).
+
+Script: `liboqs_path_probe.py` (sign+verify loop on 200 B messages, profiled for about 4 s; Pi 5 with `perf record`, M2 with `sample`).
+
+Findings (excerpts of terminal output, local user/host names replaced by USER):
+- Pi 5 (Linux aarch64, Python 3.11.2, liboqs 0.16.0, liboqs-python 0.16.0.1; `liboqs.so.0.16.0`, 13,643,672 B, sha256 7ed569848cfabf700f2df3462073f530b65f38202df8182f680de5b0382dde85, not stripped): 134 ML-DSA-related exported symbols including `PQCP_MLDSA_NATIVE_MLDSA44 (listed) and MLDSA65 (profiled) _AARCH64_*` and `*_C_*` variants. In the profile, 51.88% of samples are in `KeccakP1600_Permute_24rounds` and 13.09% in `PQCP_MLDSA_NATIVE_MLDSA65_AARCH64_intt_aarch64_asm` (called from `..._signature_internal`).
+- M2 (macOS, Python 3.13, `liboqs.0.16.0.dylib`): the profile shows `PQCP_MLDSA_NATIVE_MLDSA65_AARCH64_polyvec_matrix_expand_eager`, `..._poly_uniform_4x`, `..._rej_uniform_aarch64_asm` plus Keccak routines.
+
+Scope and limits: the probe ran separately from the reported timing runs (same library and venv, not the same process). It identifies the backend (mldsa-native AArch64 with assembly kernels), not which ISA extensions (for example SHA-3 instructions) are used inside Keccak. The excerpts are terminal captures, not complete files; the M2 capture contains only the profile part. The reference C path was not observed on either host.
+
+## x86-64 laptop (added 2026-10-03)
+Host: Intel Core i7-6500U (Skylake, AVX2 and BMI2 present), Ubuntu 22.04.5, kernel 6.8.0-138, Python 3.10.12; liboqs 0.16.0 built from tag 0.16.0 (commit 5a1a854b0dc9f2141bdc771c555ee60c37950183) with the same options as the Pi 5 build (shared library, OQS_DIST_BUILD=ON, OQS_OPT_TARGET=generic, OQS_USE_OPENSSL=ON, OQS_BUILD_ONLY_LIB=ON, Release); `liboqs.so.0.16.0` 24,174,464 B, sha256 737cc632cfa10a9803c1a125383247aff821c7ee55ff6f580f63b2414d4398b4, not stripped. The build type was chosen by us; the Pi 5 build type was not recorded.
+Findings (`x86_probe_output_excerpt.txt`): 119 ML-DSA-65-related exported symbols, both `PQCP_MLDSA_NATIVE_MLDSA65_C_*` and `..._X86_64_*` variants. In the 4,001-sample `perf record` profile of a sign+verify loop, the executing ML-DSA code is the mldsa-native x86-64 AVX2 assembly (`..._X86_64_invntt_avx2_asm` 9.88%, `..._ntt_avx2_asm` 7.78%, `..._X86_64_signature` and `..._X86_64_verify` appear as callers); Keccak accounts for about 47% of samples (`KeccakP1600times4_PermuteAll_24rounds_avx2` 26.96%, scalar `__KeccakF1600` 16.67%, `KeccakP1600times4_ExtractBytes_avx2` 3.14%). The reference C variant was not observed.
+Scope and limits: same as for the other hosts. The probe ran separately from the timing runs (after them, same library and venv, not the same process); `perf_event_paranoid` was lowered from 4 to 1 for the probe and restored to 4. perf reported that kernel symbols could not be resolved, which does not affect the user-space symbols above; some call chains show unresolved addresses. The "strings (impl hints)" lines in the capture list Kyber symbols and say nothing about ML-DSA.

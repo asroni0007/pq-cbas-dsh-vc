@@ -1,7 +1,6 @@
 # ESP32 ECDSA-P256 baseline (companion to PQCBAS_ESP32_Final)
 
-STATUS: **sketch written but NOT yet compiled or run on hardware.** No ESP32 result from this folder may be quoted
-until it has been compiled, flashed and its log archived.
+STATUS: **superseded.** This folder holds the sketches and the two first-unit mbedTLS runs of 1 October 2026 (see Results below). The numbers quoted in the paper now come from `../esp32_two_unit_20261003/` (two units, two runs each, mbedTLS and micro-ecc, validated raw logs). The sentence below that the sketch was not yet compiled is historical.
 
 Sketch: `PQCBAS_ESP32_ECDSA/PQCBAS_ESP32_ECDSA.ino` (mbedTLS from the Arduino-ESP32 core; same 240 MHz, task priority,
 N = 20/500/500, esp_timer, vTaskDelay between iterations, and 7,353-byte transcript as the ML-DSA sketch).

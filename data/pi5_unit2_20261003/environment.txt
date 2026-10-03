@@ -1,0 +1,23 @@
+Sat Oct  3 07:15:27 AM WIB 2026
+raspberrypi (second Pi 5; first unit host name: pi13)
+Linux raspberrypi 6.6.51+rpt-rpi-2712 #1 SMP PREEMPT Debian 1:6.6.51-1+rpt3 (2024-10-08) aarch64 GNU/Linux
+Raspberry Pi 5 Model B Rev 1.0
+Revision	: d04170
+Serial		: 337b3bda9c12961a
+performance
+performance
+performance
+performance
+throttled=0x0
+temp=60.4'C
+frequency(0)=2400027136
+               total        used        free      shared  buff/cache   available
+Mem:            8052         581        5805          25        1787        7470
+Swap:            511           0         511
+7ed569848cfabf700f2df3462073f530b65f38202df8182f680de5b0382dde85  /home/USER/_oqs/lib/liboqs.so.0.16.0
+cffi==2.1.1
+cryptography==50.0.1
+liboqs-python==0.16.0.1
+numpy==2.4.6
+packaging==26.3
+pycparser==3.0

@@ -1,0 +1,78 @@
+x86-64 laptop (Intel Core i7-6500U, Ubuntu 22.04.5, kernel 6.8.0-138, Python 3.10.12): terminal capture of liboqs_path_probe.py, 2026-10-03 (excerpt: lines 107-120 header and symbol list start, line 156 file type, lines 173-186 profile start; local user and host names replaced by USER)
+NOTE: the capture was pasted from the terminal and contains the same output twice; this file keeps the first complete copy of each part.
+
+host: Linux-6.8.0-138-generic-x86_64-with-glibc2.35 x86_64 python 3.10.12
+oqs_version: 0.16.0
+oqs_python_version: 0.16.0.1
+ML-DSA-65 enabled: True
+liboqs files: ['/home/USER/_oqs/lib/liboqs.so.0.16.0']
+--- /home/USER/_oqs/lib/liboqs.so.0.16.0 24174464 bytes
+sha256: 737cc632cfa10a9803c1a125383247aff821c7ee55ff6f580f63b2414d4398b4  /home/USER/_oqs/lib/liboqs.so.0.16.0
+exported symbols total: 1949
+ML-DSA-65 related exported symbols: 119
+   00000000002d13f0 T OQS_SIG_ml_dsa_65_keypair
+   00000000002d15d0 T OQS_SIG_ml_dsa_65_sign
+   00000000002d1450 T OQS_SIG_ml_dsa_65_sign_with_ctx_str
+   00000000002d1670 T OQS_SIG_ml_dsa_65_verify
+   00000000002d1510 T OQS_SIG_ml_dsa_65_verify_with_ctx_str
+file: /home/USER/_oqs/lib/liboqs.so.0.16.0: ELF 64-bit LSB shared object, x86-64, version 1 (SYSV), dynamically linked, BuildID[sha1]=3dbbbb82e286b0ff330e74566cfe0afc2fcde3a5, not stripped
+
+--- profiling workload (sign+verify loop), pid 28651
+ocation was applied (e.g. kexec) symbols may be misresolved
+even with a suitable vmlinux or kallsyms file.
+
+Couldn't record kernel reference relocation symbol
+Symbol resolution may be skewed if relocation was used (e.g. kexec).
+Check /proc/kallsyms permission or run as root.
+[ perf record: Woken up 2 times to write data ]
+[ perf record: Captured and wrote 0,295 MB /tmp/probe.perf (4001 samples) ]
+
+    26.96%  liboqs.so.0.16.0                         [.] KeccakP1600times4_PermuteAll_24rounds_avx2                                       -      -            
+            |
+            ---KeccakP1600times4_PermuteAll_24rounds_avx2
+               |          
+                --26.84%--keccak_x4_inc_squeeze
+    16.67%  liboqs.so.0.16.0                         [.] __KeccakF1600                                                                    -      -            
+            |          
+             --16.62%--__KeccakF1600
+     9.88%  liboqs.so.0.16.0                         [.] PQCP_MLDSA_NATIVE_MLDSA65_X86_64_invntt_avx2_asm                                 -      -            
+            |          
+             --9.86%--PQCP_MLDSA_NATIVE_MLDSA65_X86_64_invntt_avx2_asm
+                       |          
+                       |--5.37%--PQCP_MLDSA_NATIVE_MLDSA65_X86_64_signature
+                       |          OQS_SIG_ml_dsa_65_sign
+                       |          
+                       |--3.78%--0x286340079f156
+                       |          
+                        --0.70%--PQCP_MLDSA_NATIVE_MLDSA65_X86_64_verify
+                                  OQS_SIG_ml_dsa_65_verify
+     7.78%  liboqs.so.0.16.0                         [.] PQCP_MLDSA_NATIVE_MLDSA65_X86_64_ntt_avx2_asm                                    -      -            
+            |          
+             --7.75%--PQCP_MLDSA_NATIVE_MLDSA65_X86_64_ntt_avx2_asm
+                       |          
+                       |--5.21%--0
+                       |          
+                       |--1.04%--PQCP_MLDSA_NATIVE_MLDSA65_X86_64_verify
+                       |          OQS_SIG_ml_dsa_65_verify
+                       |          
+                       |--0.75%--PQCP_MLDSA_NATIVE_MLDSA65_X86_64_signature
+                       |          OQS_SIG_ml_dsa_65_sign
+                       |          
+                        --0.75%--0xff862bc1002a8bca
+     3.14%  liboqs.so.0.16.0                         [.] KeccakP1600times4_ExtractBytes_avx2                                              -      -            
+            |          
+             --3.09%--KeccakP1600times4_ExtractBytes_avx2
+     3.00%  liboqs.so.0.16.0                         [.] Lpointwise_acc_l5_avx2_looptop2                                                  -      -            
+            |
+            ---Lpointwise_acc_l5_avx2_looptop2
+               |          
+                --0.72%--PQCP_MLDSA_NATIVE_MLDSA65_X86_64_verify
+                          OQS_SIG_ml_dsa_65_verify
+     2.42%  liboqs.so.0.16.0                         [.] PQCP_MLDSA_NATIVE_MLDSA65_X86_64_polyz_pack                                      -      -            
+            |          
+             --2.40%--PQCP_MLDSA_NATIVE_MLDSA65_X86_64_polyz_pack
+                       PQCP_MLDSA_NATIVE_MLDSA65_X86_64_signature
+
+
+
+kernel.perf_event_paranoid = 4

@@ -1,0 +1,118 @@
+host: Linux-6.6.51+rpt-rpi-2712-aarch64-with-glibc2.36 aarch64 python 3.11.2
+oqs_version: 0.16.0
+oqs_python_version: 0.16.0.1
+ML-DSA-65 enabled: True
+liboqs files: ['/home/USER/_oqs/lib/liboqs.so.0.16.0']
+--- /home/USER/_oqs/lib/liboqs.so.0.16.0 13643672 bytes
+sha256: 7ed569848cfabf700f2df3462073f530b65f38202df8182f680de5b0382dde85  /home/USER/_oqs/lib/liboqs.so.0.16.0
+exported symbols total: 2115
+ML-DSA-65 related exported symbols: 134
+   0000000000134d20 T OQS_SIG_ml_dsa_65_keypair
+   0000000000134e60 T OQS_SIG_ml_dsa_65_sign
+   0000000000134d60 T OQS_SIG_ml_dsa_65_sign_with_ctx_str
+   0000000000134ee0 T OQS_SIG_ml_dsa_65_verify
+   0000000000134de0 T OQS_SIG_ml_dsa_65_verify_with_ctx_str
+   000000000012e44c T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_intt_aarch64_asm
+   0000000000133630 T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_keypair
+   0000000000133490 T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_keypair_internal
+   000000000012f084 T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_ntt_aarch64_asm
+   00000000001346f0 T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_open
+   0000000000134a30 T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_pk_from_sk
+   000000000012fa6c T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_poly_caddq_aarch64_asm
+   000000000012fac8 T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_poly_chknorm_aarch64_asm
+   000000000012fb2c T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_poly_decompose_88_aarch64_asm
+   000000000012f9a4 T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_poly_pointwise_montgomery_aarch64_asm
+   000000000012fbfc T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_poly_use_hint_88_aarch64_asm
+   000000000012eefc T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_polyvecl_pointwise_acc_montgomery_l4_aarch64_asm
+   000000000012fd30 T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_polyz_unpack_17_aarch64_asm
+   00000000001340c0 T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_prepare_domain_separation_prefix
+   000000000012fdc8 T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_rej_uniform_aarch64_asm
+   000000000013000c T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_rej_uniform_eta2_aarch64_asm
+   0000000000134440 T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_sign
+   0000000000134350 T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_signature
+   0000000000133be0 T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_signature_extmu
+   0000000000133680 T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_signature_internal
+   00000000001347b0 T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_signature_pre_hash_internal
+   0000000000134880 T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_signature_pre_hash_shake256
+   0000000000134640 T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_verify
+   00000000001340a0 T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_verify_extmu
+   0000000000133c60 T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_verify_internal
+   0000000000134910 T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_verify_pre_hash_internal
+   00000000001349b0 T PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_verify_pre_hash_shake256
+   000000000012cd60 T PQCP_MLDSA_NATIVE_MLDSA44_C_keypair
+   000000000012cbc0 T PQCP_MLDSA_NATIVE_MLDSA44_C_keypair_internal
+   000000000012de20 T PQCP_MLDSA_NATIVE_MLDSA44_C_open
+   000000000012e160 T PQCP_MLDSA_NATIVE_MLDSA44_C_pk_from_sk
+   000000000012d7f0 T PQCP_MLDSA_NATIVE_MLDSA44_C_prepare_domain_separation_prefix
+   000000000012db70 T PQCP_MLDSA_NATIVE_MLDSA44_C_sign
+   000000000012da80 T PQCP_MLDSA_NATIVE_MLDSA44_C_signature
+   000000000012d310 T PQCP_MLDSA_NATIVE_MLDSA44_C_signature_extmu
+file: /home/USER/_oqs/lib/liboqs.so.0.16.0: ELF 64-bit LSB shared object, ARM aarch64, version 1 (SYSV), dynamically linked, BuildID[sha1]=00cbd2f6bf93bdd36dbe10905f2b5f4d7ecd310b, not stripped
+strings (impl hints):
+   PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_keypair
+   PQCP_MLDSA_NATIVE_MLDSA44_C_keypair
+   PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_signature
+   PQCP_MLDSA_NATIVE_MLDSA44_C_signature
+   PQCP_MLDSA_NATIVE_MLDSA44_AARCH64_verify
+   PQCP_MLDSA_NATIVE_MLDSA44_C_verify
+   PQCP_MLDSA_NATIVE_MLDSA44_C_keypair_internal
+   PQCP_MLDSA_NATIVE_MLDSA44_C_signature_internal
+   PQCP_MLDSA_NATIVE_MLDSA44_C_signature_extmu
+   PQCP_MLDSA_NATIVE_MLDSA44_C_verify_internal
+   PQCP_MLDSA_NATIVE_MLDSA44_C_verify_extmu
+   PQCP_MLDSA_NATIVE_MLDSA44_C_prepare_domain_separation_prefix
+   PQCP_MLDSA_NATIVE_MLDSA44_C_sign
+   PQCP_MLDSA_NATIVE_MLDSA44_C_open
+   PQCP_MLDSA_NATIVE_MLDSA44_C_signature_pre_hash_internal
+--- profiling workload (sign+verify loop), pid 13227
+[ perf record: Woken up 3 times to write data ]
+[ perf record: Captured and wrote 0.704 MB /tmp/probe.perf (3945 samples) ]
+
+    51.88%  liboqs.so.0.16.0                          [.] KeccakP1600_Permute_24rounds                                            -      -            
+            |
+            ---KeccakP1600_Permute_24rounds
+               |          
+               |--51.07%--0x7fffb0155b24
+               |          0x7fffb0192094
+               |          0x7fffb019048c
+               |          _PyObject_MakeTpCall
+               |          _PyEval_EvalFrameDefault
+               |          _PyFunction_Vectorcall
+               |          _PyEval_EvalFrameDefault
+               |          0x5127e4
+               |          0x511878
+               |          0x659960
+               |          0x60f16c
+               |          start_thread
+               |          thread_start
+               |          
+                --0.63%--KeccakP1600times4_PermuteAll_24rounds
+                          0x7fffb0155b24
+                          0x7fffb0192094
+                          0x7fffb019048c
+                          _PyObject_MakeTpCall
+                          _PyEval_EvalFrameDefault
+                          _PyFunction_Vectorcall
+                          _PyEval_EvalFrameDefault
+                          0x5127e4
+                          0x511878
+                          0x659960
+                          0x60f16c
+                          start_thread
+                          thread_start
+    13.09%  liboqs.so.0.16.0                          [.] PQCP_MLDSA_NATIVE_MLDSA65_AARCH64_intt_aarch64_asm                      -      -            
+            |
+            ---PQCP_MLDSA_NATIVE_MLDSA65_AARCH64_intt_aarch64_asm
+               |          
+               |--7.06%--PQCP_MLDSA_NATIVE_MLDSA65_AARCH64_signature_internal
+               |          0x7fffb0155b24
+               |          0x7fffb0192094
+               |          0x7fffb019048c
+               |          _PyObject_MakeTpCall
+               |          _PyEval_EvalFrameDefault
+               |          _PyFunction_Vectorcall
+               |          _PyEval_EvalFrameDefault
+               |          0x5127e4
+
+
+Saved: (probe output file)
