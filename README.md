@@ -1,4 +1,4 @@
-# PQ-CBAS-DSH — Research Artifact (v1.4.0, final κ = 384 profile)
+# PQ-CBAS-DSH — Research Artifact (v1.4.1, final κ = 384 profile)
 
 Reproducible measurement artifact for:
 
@@ -39,6 +39,7 @@ sha256sum -c SHA256SUMS.txt
 ## Versions
 
 - v1.4.0 (3 Oct 2026): adds the ESP32 two-unit data (`data/esp32_two_unit_20261003/`: 12 validated raw serial logs for ML-DSA-65, mbedTLS ECDSA-P256 and micro-ecc ECDSA-P256 on two units, firmware, sketches, recorder and analysis scripts), the second Raspberry Pi 5 run (`data/pi5_unit2_20261003/`), the x86-64 laptop runs (`data/x86_laptop_20261003/`) and the run-time code-path probes (`data/environment_records/runtime_path_probe/`, which the manuscript cites and v1.3.1 lacked). The ESP32 numbers of v1.3.1 and its single-unit ECDSA baseline are superseded.
+- v1.4.1 (23 Oct 2026): analysis-only additions (no new measurements): scripts and outputs for the ESP32 repetition-lattice sign-tail mechanism, the PHY/MAC fragment-independence check, the between-run verification-ratio spread and a 15-number recompute audit; plus the Veins 5.3.1 MAC-metrics patch (a reconstruction, not byte-identical to the original) with provenance records in `data/phymac_final_8694_20261001/veins_macmetrics/`.
 - v1.3.1 (2 Oct 2026): complete release: final κ = 384 data, Pi 5 repeat, build configurations, final PHY/MAC matrix, ESP32 ECDSA baseline.
 - v1.3.0 (DOI 10.5281/zenodo.23085005): archive was created from an earlier commit and is incomplete; superseded by v1.3.1.
 - v1.0.0 (DOI 10.5281/zenodo.21805963) and v1.2.0: earlier liboqs 0.15.0 results; superseded.
