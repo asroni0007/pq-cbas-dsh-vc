@@ -1,0 +1,15 @@
+T_proc = 7.17 ms; n samples: {'ML-DSA-65 framework signing': 2000, 'ECDSA-P256 micro-ecc': 2000, 'ECDSA-P256 mbedTLS': 2000, 'no OBU signing time (RSU-arrival view)': 1}
+
+Budget B = 100 ms: P(S + U + T_proc <= B), percent
+signer                                      W=10    W=30    W=50    W=90  
+ML-DSA-65 framework signing                   60.7    51.4    39.8    22.1
+ECDSA-P256 micro-ecc                           0.0     0.0     0.0     0.0
+ECDSA-P256 mbedTLS                             0.0     0.0     0.0     0.0
+no OBU signing time (RSU-arrival view)       100.0   100.0   100.0   100.0
+
+Budget B = 200 ms: P(S + U + T_proc <= B), percent
+signer                                      W=10    W=30    W=50    W=90  
+ML-DSA-65 framework signing                   93.3    91.9    90.3    85.3
+ECDSA-P256 micro-ecc                         100.0   100.0   100.0   100.0
+ECDSA-P256 mbedTLS                           100.0   100.0    70.5    39.2
+no OBU signing time (RSU-arrival view)       100.0   100.0   100.0   100.0

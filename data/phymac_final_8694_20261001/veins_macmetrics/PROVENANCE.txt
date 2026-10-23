@@ -1,0 +1,14 @@
+Veins 5.3.1 MAC-metrics patch (reconstructed)
+=============================================
+Applies with: patch -p1 -d <veins-5.3.1 source tree> < veins_macmetrics_reconstructed.patch
+Upstream tag: veins-5.3.1 (github.com/sommer/veins)
+Stock Mac1609_4.h  sha256 630733f50ebd6e7482c76ed0bfa304768bb6925a5edd009ceb72b34b76ac7bd8
+Stock Mac1609_4.cc sha256 6d53908792f3a61af1744e0a01647f38027922bcddede64e7981e19caf02b923
+Patched Mac1609_4.h  sha256 febef67fb35b6551366f595abe5251301b6c7f8f5a0bbf99195fe2c315e060bb
+Patched Mac1609_4.cc sha256 532281c4553efa4f4eb7a88c1430d843389511e92e0557db4dea1b942aa9e869
+Status: reconstructed after loss of the original patched source; NOT byte-identical to the original
+(original hashes: .h 107859f2fc946ef0a019372c57f95ae312d9d64e898a17b6dc6f2bfbb6e63805,
+ .cc 24e1b052f0b5cdf3e0f9cda3f3a3f34c08ff5966e88e2ca0de9dd3c15fd71aee).
+Effect: statistics only (counters, enqueue-time map, six recordScalar calls); no RNG draws, no scheduling or queue-behaviour change.
+Queue size: Mac1609_4.ned queueSize default 0 (unbounded EDCA queues), not overridden.
+Verified 2026-10-23: patch applied to the upstream files reproduces both patched hashes above.

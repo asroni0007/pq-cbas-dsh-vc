@@ -1,0 +1,7 @@
+M2 (k384 run)      CertValidate 0.0527 ms  ECDSA verify 0.0588  ratio 1.116  | sign ratio ML/ECDSA 4.46
+Pi5 unit1 (k384)   CertValidate 0.1359 ms  ECDSA verify 0.1956  ratio 1.440  | sign ratio ML/ECDSA 5.36
+Pi5 unit1 repeat   CertValidate 0.1365 ms  ECDSA verify 0.1955  ratio 1.432  | sign ratio ML/ECDSA 5.10
+Pi5 unit2          CertValidate 0.1364 ms  ECDSA verify 0.1956  ratio 1.435  | sign ratio ML/ECDSA 5.10
+x86 laptop run1    CertValidate 0.1154 ms  ECDSA verify 0.1230  ratio 1.066  | sign ratio ML/ECDSA 4.28
+x86 laptop run2    CertValidate 0.0950 ms  ECDSA verify 0.1630  ratio 1.716  | sign ratio ML/ECDSA 3.62
+x86 laptop run3    CertValidate 0.0945 ms  ECDSA verify 0.1068  ratio 1.129  | sign ratio ML/ECDSA 4.61

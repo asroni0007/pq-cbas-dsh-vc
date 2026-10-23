@@ -1,0 +1,140 @@
+--- a/src/veins/modules/mac/ieee80211p/Mac1609_4.h
++++ b/src/veins/modules/mac/ieee80211p/Mac1609_4.h
+@@ -139,6 +139,14 @@
+ 
+         /** @brief Id for debug messages */
+         std::string myId;
++
++        std::map<BaseFrame1609_4*, simtime_t> enqueueTimes;
++        long statsQueueDelaySamples = 0;
++        double statsQueueDelaySumMs = 0.0;
++        double statsQueueDelayMaxMs = 0.0;
++        long statsQueueLengthSamples = 0;
++        double statsQueueLengthSum = 0.0;
++        long statsQueueLengthMax = 0;
+     };
+ 
+ public:
+--- a/src/veins/modules/mac/ieee80211p/Mac1609_4.cc
++++ b/src/veins/modules/mac/ieee80211p/Mac1609_4.cc
+@@ -425,10 +425,38 @@
+ 
+ void Mac1609_4::finish()
+ {
++    long macQueueDelaySamples = 0;
++    double macQueueDelaySumMs = 0.0;
++    double macQueueDelayMaxMs = 0.0;
++
++    long macQueueLengthSamples = 0;
++    double macQueueLengthSum = 0.0;
++    long macQueueLengthMax = 0;
++
+     for (auto&& p : myEDCA) {
+         statsNumInternalContention += p.second->statsNumInternalContention;
+         statsNumBackoff += p.second->statsNumBackoff;
+         statsSlotsBackoff += p.second->statsSlotsBackoff;
++
++        macQueueDelaySamples +=
++            p.second->statsQueueDelaySamples;
++        macQueueDelaySumMs +=
++            p.second->statsQueueDelaySumMs;
++        macQueueDelayMaxMs =
++            std::max(
++                macQueueDelayMaxMs,
++                p.second->statsQueueDelayMaxMs
++            );
++
++        macQueueLengthSamples +=
++            p.second->statsQueueLengthSamples;
++        macQueueLengthSum +=
++            p.second->statsQueueLengthSum;
++        macQueueLengthMax =
++            std::max(
++                macQueueLengthMax,
++                p.second->statsQueueLengthMax
++            );
+     }
+ 
+     recordScalar("ReceivedUnicastPackets", statsReceivedPackets);
+@@ -445,6 +473,37 @@
+     recordScalar("SlotsBackoff", statsSlotsBackoff);
+     recordScalar("NumInternalContention", statsNumInternalContention);
+     recordScalar("totalBusyTime", statsTotalBusyTime.dbl());
++
++
++    recordScalar(
++        "MacQueueDelaySamples",
++        macQueueDelaySamples
++    );
++    recordScalar(
++        "MacQueueDelayMeanMs",
++        macQueueDelaySamples > 0
++            ? macQueueDelaySumMs / macQueueDelaySamples
++            : 0.0
++    );
++    recordScalar(
++        "MacQueueDelayMaxMs",
++        macQueueDelayMaxMs
++    );
++
++    recordScalar(
++        "MacQueueLengthAtEnqueueSamples",
++        macQueueLengthSamples
++    );
++    recordScalar(
++        "MacQueueLengthAtEnqueueMean",
++        macQueueLengthSamples > 0
++            ? macQueueLengthSum / macQueueLengthSamples
++            : 0.0
++    );
++    recordScalar(
++        "MacQueueLengthAtEnqueueMax",
++        macQueueLengthMax
++    );
+ }
+ 
+ Mac1609_4::~Mac1609_4()
+@@ -631,6 +690,18 @@
+         return -1;
+     }
+     myQueues[ac].queue.push(msg);
++
++    // Record successful enqueue time for first-attempt queue delay.
++    enqueueTimes[msg] = simTime();
++
++    const long queueLength =
++        static_cast<long>(myQueues[ac].queue.size());
++
++    ++statsQueueLengthSamples;
++    statsQueueLengthSum += queueLength;
++    statsQueueLengthMax =
++        std::max(statsQueueLengthMax, queueLength);
++
+     return myQueues[ac].queue.size();
+ }
+ 
+@@ -711,6 +782,24 @@
+     if (pktToSend == nullptr) {
+         throw cRuntimeError("No packet was ready");
+     }
++
++    // Queueing delay is measured from successful enqueue to first
++    // transmission attempt. Retransmissions are not new samples.
++
++    auto enqueueIt = enqueueTimes.find(pktToSend);
++
++    if (enqueueIt != enqueueTimes.end()) {
++        const double queueDelayMs =
++            (simTime() - enqueueIt->second).dbl() * 1000.0;
++
++        ++statsQueueDelaySamples;
++        statsQueueDelaySumMs += queueDelayMs;
++        statsQueueDelayMaxMs =
++            std::max(statsQueueDelayMaxMs, queueDelayMs);
++
++        enqueueTimes.erase(enqueueIt);
++    }
++
+     return pktToSend;
+ }
+ 

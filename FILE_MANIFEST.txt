@@ -29,8 +29,12 @@ data/esp32_two_unit_20261003/ESP32_ENVIRONMENT_AND_HASHES_AS_RECORDED_ON_MAC.txt
 data/esp32_two_unit_20261003/README.md
 data/esp32_two_unit_20261003/SHA256SUMS.txt
 data/esp32_two_unit_20261003/analysis/analyze_esp32.py
+data/esp32_two_unit_20261003/analysis/compose_obu_to_verdict.py
+data/esp32_two_unit_20261003/analysis/compose_obu_to_verdict_output.txt
 data/esp32_two_unit_20261003/analysis/fig_esp32_sign_budget_exceedance.pdf
 data/esp32_two_unit_20261003/analysis/make_fig_budget.py
+data/esp32_two_unit_20261003/analysis/sign_tail_mechanism.py
+data/esp32_two_unit_20261003/analysis/sign_tail_mechanism_output.txt
 data/esp32_two_unit_20261003/analysis/stats_final.json
 data/esp32_two_unit_20261003/analysis/stats_final.txt
 data/esp32_two_unit_20261003/firmware/fw_ecdsa.bin
@@ -239,6 +243,8 @@ data/legacy_phymac_tables/macmetrics_paired_tests.csv
 data/legacy_phymac_tables/macmetrics_summary_ci95.csv
 data/macmetrics_confirmatory.pdf
 data/phymac_final_8694_20261001/RERUN_PLAN.txt
+data/phymac_final_8694_20261001/fragment_independence_check.py
+data/phymac_final_8694_20261001/fragment_independence_check_output.txt
 data/phymac_final_8694_20261001/p0-5_matched120_preparation/P0-5_INPUT_SHA256.txt
 data/phymac_final_8694_20261001/p0-5_matched120_preparation/P0-5_MATRIX.csv
 data/phymac_final_8694_20261001/p0-5_matched120_preparation/P0-5_PREPARATION_PROVENANCE.txt
@@ -252,6 +258,9 @@ data/phymac_final_8694_20261001/p0-7_final_analysis/P0-7_PAIRED_SEED_DIFFERENCES
 data/phymac_final_8694_20261001/p0-7_final_analysis/P0-7_PAIRED_SIGN_TEST.csv
 data/phymac_final_8694_20261001/p0-7_final_analysis/P0-7_PAPER_COMPACT_TABLE.csv
 data/phymac_final_8694_20261001/p0-7_final_analysis/analyze_final_120.py
+data/phymac_final_8694_20261001/veins_macmetrics/PROVENANCE.txt
+data/phymac_final_8694_20261001/veins_macmetrics/SHA256SUMS.txt
+data/phymac_final_8694_20261001/veins_macmetrics/veins_macmetrics_reconstructed.patch
 data/pi5_repeat_20261001/README.txt
 data/pi5_repeat_20261001/SHA256SUMS.txt
 data/pi5_repeat_20261001/console_e3_full_and_digest_20seeds_20261001.txt
@@ -274,6 +283,10 @@ data/pi5_unit2_20261003/e2e_fullpath_W90_digest.json
 data/pi5_unit2_20261003/e2e_fullpath_W90_full.json
 data/pi5_unit2_20261003/environment.txt
 data/pi5_unit2_20261003/pi_thermal_run.log
+data/ratio_between_run_spread.py
+data/ratio_between_run_spread_output.txt
+data/recompute_audit.py
+data/recompute_audit_output.txt
 data/security_experiments_v2.json
 data/security_experiments_v2.py
 data/tables/P0-7_FINAL_120_RUNS.csv
