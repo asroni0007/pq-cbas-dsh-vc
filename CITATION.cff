@@ -10,7 +10,7 @@ authors:
   - family-names: "Wibowo"
     given-names: "Sigit B."
 license: MIT
-version: "1.4.4-final-k384"
+version: "1.4.5-final-k384"
 doi: 10.5281/zenodo.21805962
 date-released: 2026-10-24
 repository-code: "https://github.com/asroni0007/pq-cbas-dsh-vc"

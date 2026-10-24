@@ -1,0 +1,15 @@
+USER         PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND
+cyber       2781 10.2  1.4 946544 115836 ?       Sl   Okt13 1523:01 /usr/lib/xorg/Xorg :10 -auth .Xauthority -config xrdp/xorg.conf -noreset -nolisten tcp -logfile .xorgxrdp.%s.log
+cyber       2957  3.3  1.2 842636 97392 ?        Sl   Okt13 495:09 xfwm4
+root          30  0.6  0.0      0     0 ?        S    Okt13  94:49 [ksoftirqd/2]
+root         752  0.3  0.0 236708  7096 ?        Ssl  Okt13  49:49 /usr/libexec/iio-sensor-proxy
+cyber       1715  0.2  0.3 1763120 32096 ?       S<sl Okt13  32:01 /usr/bin/pulseaudio --daemonize=no --log-target=journal
+cyber       3075  0.2  0.5 664796 44452 ?        Sl   Okt13  39:32 /usr/lib/x86_64-linux-gnu/xfce4/panel/wrapper-2.0 /usr/lib/x86_64-linux-gnu/xfce4/panel/plugins/libpulseaudio-plugin.so 8 18874377 pulseaudio PulseAudio Plugin Adjust the audio volume of the PulseAudio sound system
+systemd+   63259  0.2  0.0  14868  6928 ?        Ss   Okt22   5:57 /lib/systemd/systemd-oomd
+cyber       1992  0.1  3.3 4672440 268704 ?      Ssl  Okt13  15:07 /usr/bin/gnome-shell
+cyber       2990  0.1  0.6 473664 51232 ?        Sl   Okt13  15:25 xfce4-panel
+cyber       3043  0.1  0.3 379724 31844 ?        Sl   Okt13  22:02 xfce4-screensaver
+root           1  0.0  0.1 168448 13996 ?        Ss   Okt13   0:50 /lib/systemd/systemd --system --deserialize 56 splash
+root           2  0.0  0.0      0     0 ?        S    Okt13   0:00 [kthreadd]
+root           3  0.0  0.0      0     0 ?        S    Okt13   0:00 [pool_workqueue_release]
+root           4  0.0  0.0      0     0 ?        I<   Okt13   0:00 [kworker/R-rcu_g]
