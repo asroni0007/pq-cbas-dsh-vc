@@ -1,0 +1,11 @@
+========================================
+P0-7 EXTRACTION COMPLETE
+========================================
+Runs parsed      = 120
+Cells summarized = 12
+
+✅ P0-7 EXTRACTION PASS
+
+/Users/asroni/pqcbas_rerun_20261025/analysis/P0-7_FINAL_120_RUNS.csv
+/Users/asroni/pqcbas_rerun_20261025/analysis/P0-7_FINAL_12_CELL_SUMMARY.csv
+/Users/asroni/pqcbas_rerun_20261025/analysis/P0-7_PAPER_COMPACT_TABLE.csv

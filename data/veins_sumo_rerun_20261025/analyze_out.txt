@@ -1,0 +1,8 @@
+runs ready:      120, missing: 0
+P0-7_FINAL_120_RUNS.csv              rows 120: identical 120, differing   0 (cells differing: 0)
+P0-7_FINAL_12_CELL_SUMMARY.csv       rows  12: identical  12, differing   0 (cells differing: 0)
+P0-7_PAIRED_SEED_DIFFERENCES.csv     skipped (archived True, rerun False)
+P0-7_PAIRED_SIGN_TEST.csv            skipped (archived True, rerun False)
+P0-7_PAPER_COMPACT_TABLE.csv         rows  12: identical  12, differing   0 (cells differing: 0)
+P0-7_FINAL_PHYMAC_PAPER_TABLE.csv    skipped (archived True, rerun False)
+VERDICT: ALL 3 COMPARED TABLES MATCH
