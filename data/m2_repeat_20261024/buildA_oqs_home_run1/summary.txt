@@ -1,0 +1,73 @@
+M2 CA/CS EXTRA MEASUREMENTS
+============================================================
+host: Apple M2 | macOS-26.6-arm64-arm-64bit-Mach-O | python 3.13.15 | liboqs 0.16.0 | liboqs-python 0.16.0.1 | cryptography 50.0.1
+[before] 2026-10-24 19:44:32
+   pmset_batt: Now drawing from 'AC Power'
+ -InternalBattery-0 (id=26214499)	100%; charged; 0:00 remaining present: true
+   pmset_therm: Note: No thermal warning level has been recorded
+Note: No performance warning level has been recorded
+Note: No CPU power status has been recorded
+   pmset_lowpower: ['lowpowermode         0']
+[after_B] 2026-10-24 19:44:41
+   pmset_batt: Now drawing from 'AC Power'
+ -InternalBattery-0 (id=26214499)	100%; charged; 0:00 remaining present: true
+   pmset_therm: Note: No thermal warning level has been recorded
+Note: No performance warning level has been recorded
+Note: No CPU power status has been recorded
+   pmset_lowpower: ['lowpowermode         0']
+[after_C] 2026-10-24 19:44:46
+   pmset_batt: Now drawing from 'AC Power'
+ -InternalBattery-0 (id=26214499)	100%; charged; 0:00 remaining present: true
+   pmset_therm: Note: No thermal warning level has been recorded
+Note: No performance warning level has been recorded
+Note: No CPU power status has been recorded
+   pmset_lowpower: ['lowpowermode         0']
+[after_D] 2026-10-24 19:45:06
+   pmset_batt: Now drawing from 'AC Power'
+ -InternalBattery-0 (id=26214499)	100%; charged; 0:00 remaining present: true
+   pmset_therm: Note: No thermal warning level has been recorded
+Note: No performance warning level has been recorded
+Note: No CPU power status has been recorded
+   pmset_lowpower: ['lowpowermode         0']
+
+B. Verification, 20 sessions x 2000 reps (ms)
+variant                                           mean   ci95_lo   ci95_hi pooledCV%
+mldsa_certvalidate_as_in_paper                  0.0531    0.0526    0.0536      6.4
+mldsa_verify_reused_verifier_with_hash          0.0494    0.0490    0.0498      5.0
+mldsa_verify_reused_verifier_core_only          0.0471    0.0461    0.0481     28.2
+shake256_hash_only                              0.0028    0.0028    0.0028     17.2
+ecdsa_p256_verify_as_in_paper                   0.0579    0.0576    0.0581      5.9
+empty_python_call                               0.0001    0.0001    0.0001     50.3
+ratio ECDSA/ML-DSA (>1 = ML-DSA faster):
+  mldsa_certvalidate_as_in_paper             1.091  CI95 [1.080, 1.101]  ratio of medians 1.096  faster in 20/20 sessions
+  mldsa_verify_reused_verifier_with_hash     1.173  CI95 [1.163, 1.183]  ratio of medians 1.174  faster in 20/20 sessions
+  mldsa_verify_reused_verifier_core_only     1.232  CI95 [1.210, 1.254]  ratio of medians 1.246  faster in 20/20 sessions
+
+C. Parallel CertValidate per window, 300 windows (ms)
+tuples mode                         s      mean       p99   speedup     model
+    16 sequential                   1    0.7864    0.8300      1.00    0.7864
+    16 threads                      2    0.4465    0.4775      1.76    0.3932
+    16 processes_send_certs         2    0.5189    0.5980      1.52    0.3932
+    16 processes_resident_certs     2    0.5296    0.9405      1.48    0.3932
+    16 threads                      4    0.2946    0.3155      2.67    0.1966
+    16 processes_send_certs         4    0.3747    0.5400      2.10    0.1966
+    16 processes_resident_certs     4    0.3885    0.5765      2.02    0.1966
+    16 threads                      8    0.3693    0.4320      2.13    0.0983
+    16 processes_send_certs         8    0.4333    0.5134      1.81    0.0983
+    16 processes_resident_certs     8    0.4174    0.5161      1.88    0.0983
+    22 sequential                   1    1.0823    1.1154      1.00    1.0823
+    22 threads                      2    0.6010    0.6384      1.80    0.5412
+    22 processes_send_certs         2    0.6755    0.7320      1.60    0.5412
+    22 processes_resident_certs     2    0.6859    1.2823      1.58    0.5412
+    22 threads                      4    0.3947    0.4202      2.74    0.2706
+    22 processes_send_certs         4    0.4451    0.6156      2.43    0.2706
+    22 processes_resident_certs     4    0.4654    0.6965      2.33    0.2706
+    22 threads                      8    0.4741    0.5406      2.28    0.1353
+    22 processes_send_certs         8    0.5055    0.5867      2.14    0.1353
+    22 processes_resident_certs     8    0.4870    0.5881      2.22    0.1353
+
+D. CertGen sustained, 10 s per pass
+  gc_enabled   n=92366  9237/s  mean 0.1076  median 0.0925  p99 0.3013  p99.9 0.4236  max 0.709 ms  >10x median: 0
+      top5 ms [0.709, 0.642, 0.598, 0.598, 0.593] at s [2.898, 2.835, 8.367, 4.788, 5.151]
+  gc_disabled  n=92758  9276/s  mean 0.1071  median 0.0922  p99 0.3004  p99.9 0.4171  max 0.674 ms  >10x median: 0
+      top5 ms [0.674, 0.669, 0.617, 0.568, 0.556] at s [6.665, 7.738, 6.023, 6.6, 4.951]

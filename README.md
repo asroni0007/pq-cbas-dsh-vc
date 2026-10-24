@@ -1,4 +1,4 @@
-# PQ-CBAS-DSH — Research Artifact (v1.4.1, final κ = 384 profile)
+# PQ-CBAS-DSH — Research Artifact (v1.4.2, final κ = 384 profile)
 
 Reproducible measurement artifact for:
 
@@ -38,6 +38,7 @@ sha256sum -c SHA256SUMS.txt
 
 ## Versions
 
+- v1.4.2 (24 Oct 2026): Apple M2 CA/CS repeat data (24 Oct 2026) with two documented liboqs 0.16.0 builds: a source build without OpenSSL (build A, SHA-256 prefix 3a9a78ce6916094e) and the Homebrew package linking OpenSSL 4 (build B, SHA-256 prefix f2c030021056e1d6). Three build-A and two build-B runs of the CA/CS extension script (verification comparison, parallel certificate validation, sustained issuance) and six repeats of the unchanged benchmark are in `data/m2_repeat_20261024/`; library paths, hashes, linked libraries and package versions are in `data/environment_records/m2_20261024/`. The M2 ML-DSA-65 verification ratio depends on which liboqs build liboqs-python loads. The Homebrew file is dated 22 Oct 2026, so the build used on 29 Sep 2026 is inferred, not recorded.
 - v1.4.0 (3 Oct 2026): adds the ESP32 two-unit data (`data/esp32_two_unit_20261003/`: 12 validated raw serial logs for ML-DSA-65, mbedTLS ECDSA-P256 and micro-ecc ECDSA-P256 on two units, firmware, sketches, recorder and analysis scripts), the second Raspberry Pi 5 run (`data/pi5_unit2_20261003/`), the x86-64 laptop runs (`data/x86_laptop_20261003/`) and the run-time code-path probes (`data/environment_records/runtime_path_probe/`, which the manuscript cites and v1.3.1 lacked). The ESP32 numbers of v1.3.1 and its single-unit ECDSA baseline are superseded.
 - v1.4.1 (23 Oct 2026): analysis-only additions (no new measurements): scripts and outputs for the ESP32 repetition-lattice sign-tail mechanism, the PHY/MAC fragment-independence check, the between-run verification-ratio spread and a 15-number recompute audit; plus the Veins 5.3.1 MAC-metrics patch (a reconstruction, not byte-identical to the original) with provenance records in `data/phymac_final_8694_20261001/veins_macmetrics/`.
 - v1.3.1 (2 Oct 2026): complete release: final κ = 384 data, Pi 5 repeat, build configurations, final PHY/MAC matrix, ESP32 ECDSA baseline.

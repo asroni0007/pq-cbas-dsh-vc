@@ -1,0 +1,44 @@
+M2 liboqs and environment record, captured 2026-10-24 21:37:07
+macOS: ProductName:		macOS | ProductVersion:		26.6 | BuildVersion:		25G72
+machine: arm64
+
+== build A (source build, no OpenSSL; forced with DYLD_LIBRARY_PATH)
+path: ~/_oqs/lib/liboqs.0.16.0.dylib
+sha256: 3a9a78ce6916094e4fb439935a8813e63b6d4baf8f5a54ddf8384e9fb611bdd1
+modified: 2026-07-22 16:49:41
+links:
+~/_oqs/lib/liboqs.0.16.0.dylib:
+	@rpath/liboqs.9.dylib (compatibility version 9.0.0, current version 0.16.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)
+
+== build B (Homebrew package)
+path: /opt/homebrew/Cellar/liboqs/0.16.0/lib/liboqs.0.16.0.dylib
+sha256: f2c030021056e1d6d6e50a4e770148adc7589c088c3865e77389091cf7f6387b
+modified: 2026-10-22 13:33:01
+links:
+/opt/homebrew/Cellar/liboqs/0.16.0/lib/liboqs.0.16.0.dylib:
+	/opt/homebrew/opt/liboqs/lib/liboqs.9.dylib (compatibility version 9.0.0, current version 0.16.0)
+	/opt/homebrew/opt/openssl@4/lib/libcrypto.4.dylib (compatibility version 4.0.0, current version 4.0.0)
+	/usr/lib/libSystem.B.dylib (compatibility version 1.0.0, current version 1356.0.0)
+
+== brew: liboqs 0.16.0
+
+== pip freeze of the benchmark environment
+cffi==2.1.1
+contourpy==1.4.0
+cryptography==50.0.1
+cycler==0.12.1
+fonttools==4.66.0
+kiwisolver==1.5.1
+liboqs-python==0.16.0.1
+matplotlib==3.11.2
+numpy==2.5.3
+packaging==26.3
+pillow==12.3.0
+pycparser==3.0
+pyparsing==3.3.3
+pyserial==3.5
+python-dateutil==2.9.0.post0
+setuptools==84.0.0
+six==1.17.0
+wheel==0.48.0
