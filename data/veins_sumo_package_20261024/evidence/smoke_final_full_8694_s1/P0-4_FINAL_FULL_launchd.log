@@ -1,0 +1,30 @@
+DEBUG:root:Logging to ~/pqcbas-final-full-8694-smoke-s1/P0-4_FINAL_FULL_launchd.log
+INFO:root:Listening on port 9999
+DEBUG:root:Connection from 127.0.0.1 on port 55034
+DEBUG:root:Handling connection from 127.0.0.1 on port 55034
+DEBUG:root:Got TraCI message of length 2
+DEBUG:root:Got TraCI command of length 1
+DEBUG:root:Got TraCI command 0x0
+DEBUG:root:Got CMD_GETVERSION
+DEBUG:root:Got TraCI message of length 308
+DEBUG:root:Got TraCI command of length 303
+DEBUG:root:Got TraCI command 0x75
+DEBUG:root:Got CMD_FILE_SEND for "b'sumo-launchd.launch.xml'"
+DEBUG:root:Got CMD_FILE_SEND with data "b'<launch>\n  <copy file="StudyAreNetwork.net.xml"/>\n  <copy file="Demand.rou.xml"/>\n  <copy file="PublicTransport.xml"/>\n  <copy file="studyarea_veins.sumocfg" type="config"/>\n  <seed value="1"/>\n  <basedir path="~/pqcbas-final-full-8694-smoke-s1/"/>\n</launch>\n'"
+DEBUG:root:Creating temporary directory...
+DEBUG:root:Temporary dir is /var/folders/sf/c1tylng17qnf3zc1sxlzxp180000gn/T/sumo-launchd-tmp-zdimncpc
+DEBUG:root:Base dir is ~/pqcbas-final-full-8694-smoke-s1/
+DEBUG:root:Seed is 1
+DEBUG:root:Finding free port number...
+DEBUG:root:Claiming lock on port
+DEBUG:root:...found port 55035
+INFO:root:Starting SUMO (~/pq-sumo-1.22.0-src/bin/sumo -c studyarea_veins.sumocfg) on port 55035, seed 1
+DEBUG:root:Connecting to SUMO (~/pq-sumo-1.22.0-src/bin/sumo -c studyarea_veins.sumocfg) on port 55035 (try 1)
+DEBUG:root:Error ([Errno 61] Connection refused)
+DEBUG:root:Connecting to SUMO (~/pq-sumo-1.22.0-src/bin/sumo -c studyarea_veins.sumocfg) on port 55035 (try 2)
+DEBUG:root:Releasing lock on port
+DEBUG:root:Starting proxy mode
+DEBUG:root:Done with proxy mode
+DEBUG:root:Done with proxy mode, killing SUMO
+WARNING:root:Killed.
+INFO:root:Shutting down.

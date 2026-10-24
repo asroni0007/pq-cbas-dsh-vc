@@ -1,0 +1,21 @@
+{
+  "matrix": "P0-5 matched 120-run final K384",
+  "ordinal": 5,
+  "tag": "q005_b005_small_6M_t10_10Hz_s5",
+  "source_historical_tag": "q005_b005_small_6M_t10_10Hz_s5",
+  "historical_id": "b005",
+  "variant": "small",
+  "logical_payload_bytes": 300,
+  "fragment_payload_bytes": 1200,
+  "fragment_header_bytes": 48,
+  "expected_fragments": 1,
+  "phy_mbps": 6,
+  "logical_rate_hz": 10,
+  "logical_message_interval_s": 0.1,
+  "logical_deadline_s": 0.1,
+  "reassembly_timeout_s": 0.5,
+  "target": 10,
+  "demand_scale": 0.4,
+  "seed": 5,
+  "simulation_time_s": 120
+}

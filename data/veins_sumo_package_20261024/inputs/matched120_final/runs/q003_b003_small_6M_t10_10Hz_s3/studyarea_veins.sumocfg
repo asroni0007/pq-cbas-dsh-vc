@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <input>
+        <net-file value="StudyAreNetwork.net.xml"/>
+        <route-files value="Demand.rou.xml"/>
+        <additional-files value="PublicTransport.xml"/>
+    </input>
+    <time>
+        <begin value="0"/>
+        <end value="120"/>
+    </time>
+    <processing>
+        <scale value="0.4"/>
+    </processing>
+    <report>
+        <no-step-log value="true"/>
+        <duration-log.disable value="true"/>
+    </report>
+</configuration>

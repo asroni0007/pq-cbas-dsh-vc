@@ -1,0 +1,21 @@
+{
+  "matrix": "P0-5 matched 120-run final K384",
+  "ordinal": 101,
+  "tag": "q101_c121_digest_6M_t50_10Hz_s1",
+  "source_historical_tag": "q101_c121_digest_6M_t50_10Hz_s1",
+  "historical_id": "c121",
+  "variant": "digest",
+  "logical_payload_bytes": 3465,
+  "fragment_payload_bytes": 1200,
+  "fragment_header_bytes": 48,
+  "expected_fragments": 3,
+  "phy_mbps": 6,
+  "logical_rate_hz": 10,
+  "logical_message_interval_s": 0.1,
+  "logical_deadline_s": 0.1,
+  "reassembly_timeout_s": 0.5,
+  "target": 50,
+  "demand_scale": 2.0,
+  "seed": 1,
+  "simulation_time_s": 120
+}

@@ -1,0 +1,21 @@
+{
+  "run_id": "1",
+  "phase": "B1b_confirmatory_fragmented",
+  "seed": "1",
+  "mode": "full",
+  "payload_bytes": "10662",
+  "logical_payload_bytes": "10662",
+  "fragment_payload_bytes": "1200",
+  "fragment_header_bytes": "48",
+  "fragment_count": "9",
+  "phy_rate_mbps": "6",
+  "target_concurrent_vehicles": "10",
+  "demand_scale": "0.4",
+  "msg_rate_hz": "10",
+  "logical_deadline_ms": "100",
+  "reassembly_timeout_ms": "500",
+  "window_ms": "90",
+  "status": "PLANNED",
+  "run_tag": "c001_full_6M_t10_10Hz_s1",
+  "sim_time_s": 120
+}

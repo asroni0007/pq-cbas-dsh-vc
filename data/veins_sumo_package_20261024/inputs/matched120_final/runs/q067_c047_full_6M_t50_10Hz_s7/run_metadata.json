@@ -1,0 +1,21 @@
+{
+  "matrix": "P0-5 matched 120-run final K384",
+  "ordinal": 67,
+  "tag": "q067_c047_full_6M_t50_10Hz_s7",
+  "source_historical_tag": "q067_c047_full_6M_t50_10Hz_s7",
+  "historical_id": "c047",
+  "variant": "full",
+  "logical_payload_bytes": 8694,
+  "fragment_payload_bytes": 1200,
+  "fragment_header_bytes": 48,
+  "expected_fragments": 8,
+  "phy_mbps": 6,
+  "logical_rate_hz": 10,
+  "logical_message_interval_s": 0.1,
+  "logical_deadline_s": 0.1,
+  "reassembly_timeout_s": 0.5,
+  "target": 50,
+  "demand_scale": 2.0,
+  "seed": 7,
+  "simulation_time_s": 120
+}

@@ -1,0 +1,32 @@
+DEBUG:root:Logging to ~/pqcbas-legacy-smoke-c001-full-explicit/P0-3_FULL_launchd.log
+INFO:root:Listening on port 9999
+DEBUG:root:Connection from 127.0.0.1 on port 54182
+DEBUG:root:Handling connection from 127.0.0.1 on port 54182
+DEBUG:root:Got TraCI message of length 2
+DEBUG:root:Got TraCI command of length 1
+DEBUG:root:Got TraCI command 0x0
+DEBUG:root:Got CMD_GETVERSION
+DEBUG:root:Got TraCI message of length 315
+DEBUG:root:Got TraCI command of length 310
+DEBUG:root:Got TraCI command 0x75
+DEBUG:root:Got CMD_FILE_SEND for "b'sumo-launchd.launch.xml'"
+DEBUG:root:Got CMD_FILE_SEND with data "b'<launch>\n  <copy file="StudyAreNetwork.net.xml"/>\n  <copy file="Demand.rou.xml"/>\n  <copy file="PublicTransport.xml"/>\n  <copy file="studyarea_veins.sumocfg" type="config"/>\n  <seed value="1"/>\n  <basedir path="~/pqcbas-legacy-smoke-c001-full-explicit/"/>\n</launch>\n'"
+DEBUG:root:Creating temporary directory...
+DEBUG:root:Temporary dir is /var/folders/sf/c1tylng17qnf3zc1sxlzxp180000gn/T/sumo-launchd-tmp-k0fnvxp8
+DEBUG:root:Base dir is ~/pqcbas-legacy-smoke-c001-full-explicit/
+DEBUG:root:Seed is 1
+DEBUG:root:Finding free port number...
+DEBUG:root:Claiming lock on port
+DEBUG:root:...found port 54183
+INFO:root:Starting SUMO (~/pq-sumo-1.22.0-src/bin/sumo -c studyarea_veins.sumocfg) on port 54183, seed 1
+DEBUG:root:Connecting to SUMO (~/pq-sumo-1.22.0-src/bin/sumo -c studyarea_veins.sumocfg) on port 54183 (try 1)
+DEBUG:root:Error ([Errno 61] Connection refused)
+DEBUG:root:Connecting to SUMO (~/pq-sumo-1.22.0-src/bin/sumo -c studyarea_veins.sumocfg) on port 54183 (try 2)
+DEBUG:root:Error ([Errno 61] Connection refused)
+DEBUG:root:Connecting to SUMO (~/pq-sumo-1.22.0-src/bin/sumo -c studyarea_veins.sumocfg) on port 54183 (try 3)
+DEBUG:root:Releasing lock on port
+DEBUG:root:Starting proxy mode
+DEBUG:root:Done with proxy mode
+DEBUG:root:Done with proxy mode, killing SUMO
+WARNING:root:Killed.
+INFO:root:Shutting down.

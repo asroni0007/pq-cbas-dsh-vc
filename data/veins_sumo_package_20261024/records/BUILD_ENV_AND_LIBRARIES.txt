@@ -1,0 +1,9 @@
+Veins/SUMO package record, computed 2026-10-24 23:27:11 (NOT at run time)
+macOS: 26.6
+machine: arm64
+clang: Apple clang version 21.0.0 (clang-2100.1.1.101)
+sumo: Eclipse SUMO sumo 1.27.1
+sumo (source build): Eclipse SUMO sumo Version 1.22.0
+
+library libpqcbas.dylib  sha256 609182f550c7a837baafacbefdce5202bdf5d8d3712c32200c5a4fd9b18e8f7a  mtime 2026-09-30 11:32:14
+library libpqcbas.dylib.TAHAP2_ORIGINAL_20260812  sha256 92d45cd0a953895735437b021fb97e6628d00a17f168df2c33eec4a8f75956f6  mtime 2026-08-12 20:01:40

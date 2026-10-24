@@ -1,0 +1,58 @@
+[General]
+cmdenv-express-mode = true
+cmdenv-autoflush = true
+network = pqcbas.PQScenario
+sim-time-limit = @SIM_TIME@s
+**.scalar-recording = true
+**.vector-recording = true
+result-dir = results/@RUN_TAG@
+seed-set = @SEED@
+
+# TraCI / SUMO
+*.manager.updateInterval = 0.1s
+*.manager.host = "localhost"
+*.manager.port = 9999
+*.manager.seed = @SEED@
+*.manager.autoShutdown = true
+*.manager.launchConfig = xmldoc("studyarea.launchd.xml")
+
+# RSU
+*.rsu[0].mobility.x = 80
+*.rsu[0].mobility.y = 36
+*.rsu[0].mobility.z = 3
+*.rsu[*].applType = "pqcbas.PQRSUApp"
+*.rsu[*].appl.headerLength = 0bit
+*.rsu[*].appl.sendBeacons = false
+*.rsu[*].appl.dataOnSch = false
+*.rsu[*].appl.rsuX = 80
+*.rsu[*].appl.rsuY = 36
+*.rsu[*].appl.rsuRadius = 150
+
+# Dynamic vehicle nodes: use periodic BSMs as the authenticated safety-message carrier.
+*.node[*].applType = "pqcbas.PQVehicleApp"
+*.node[*].appl.headerLength = 0bit
+*.node[*].appl.sendBeacons = true
+*.node[*].appl.dataOnSch = false
+*.node[*].appl.beaconInterval = @BEACON_INTERVAL@s
+*.node[*].appl.beaconLengthBits = @PAYLOAD_BITS@bit
+*.node[*].appl.rsuX = 80
+*.node[*].appl.rsuY = 36
+*.node[*].appl.rsuRadius = 150
+*.node[*].veinsmobility.setHostSpeed = false
+
+# 802.11p MAC/PHY
+*.connectionManager.sendDirect = true
+*.connectionManager.maxInterfDist = 2600m
+*.connectionManager.drawMaxIntfDist = false
+*.**.nic.mac1609_4.useServiceChannel = false
+*.**.nic.mac1609_4.txPower = 20mW
+*.**.nic.mac1609_4.bitrate = @PHY_RATE@Mbps
+*.**.nic.phy80211p.minPowerLevel = -110dBm
+*.**.nic.phy80211p.useNoiseFloor = true
+*.**.nic.phy80211p.noiseFloor = -98dBm
+*.**.nic.phy80211p.usePropagationDelay = true
+
+# Reuse Veins' standard config.xml/antenna.xml models or replace with a documented model.
+*.**.nic.phy80211p.decider = xmldoc("config.xml")
+*.**.nic.phy80211p.analogueModels = xmldoc("config.xml")
+*.**.nic.phy80211p.antenna = xmldoc("antenna.xml", "/root/Antenna[@id='monopole']")

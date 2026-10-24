@@ -1,0 +1,8 @@
+<?xml version="1.0"?>
+<launch>
+    <copy file="StudyAreNetwork.net.xml" />
+    <copy file="Demand.rou.xml" />
+    <copy file="PublicTransport.xml" />
+    <copy file="studyarea_veins.sumocfg" type="config" />
+    <seed value="9" />
+</launch>
